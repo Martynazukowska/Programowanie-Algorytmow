@@ -9,7 +9,8 @@ class List
     class Node; //mówimy że będzie , później rozpiszemy 
     T counter; 
     std::shared_ptr<Node> head =nullptr;
-
+    std::shared_ptr<Node> tail =nullptr;
+    
     class Node
     {      
       public:
@@ -23,6 +24,7 @@ class List
           X->value = nowa;
           X->next = nullptr;
           X->before = nullptr;
+          return X;
         }
     };
     
@@ -174,8 +176,21 @@ typename List<T>::Iterator List<T>::Iterator::operator-(difference_type diff) co
 template <typename T>
 typename List<T>::Iterator List<T>::Iterator::operator[](std::size_t i)
 {
-  // TODO: implement
-  return Iterator();
+  std::shared_ptr<Node> dodatkowy(nullptr);
+  if(i==0)
+    {
+      dodatkowy=n_ptr;
+    }
+  else
+    {
+      dodatkowy=n_ptr;
+      for(int x=0; x<=i; x++)
+      {
+        dodatkowy=dodatkowy->next;
+      }
+
+    }
+  return Iterator(dodatkowy);
 }
 
 template <typename T>
@@ -273,8 +288,20 @@ typename List<T>::ConstIterator List<T>::ConstIterator::operator-(difference_typ
 template <typename T>
 typename List<T>::ConstIterator List<T>::ConstIterator::operator[](std::size_t i)
 {
-  // TODO: implement
-  return Iterator();
+  std::shared_ptr<Node> dodatkowy(nullptr);
+  if(i==0)
+    {
+      dodatkowy=n_ptr;
+    }
+  else
+    {
+      dodatkowy=n_ptr;
+      for(int x=0; x<=i; x++)
+      {
+        dodatkowy=dodatkowy->next;
+      }   
+    }
+  return Iterator(dodatkowy);
 }
 
 template <typename T>
@@ -313,15 +340,8 @@ void List<T>::pushBack(const T& newElement)
 
     }
     jump->next = dodatkowy;
-    dodatkowy->before = jump; //zaytać się czy jump->before;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    jump = nullptr;
   }
-  //zapytać się czy Sdodatkowy = nullptr!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  counter++;
-
-  
-    
+  counter++;   
 }
 template <typename T>
 void List<T>::pushFront(const T& newElement)
@@ -339,44 +359,43 @@ void List<T>::pushFront(const T& newElement)
     head = dodatkowy;
   }
   counter ++;
-  //zapytać się czy dodatkowy = nullptr!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 }
 template <typename T>
 void List<T>::insert(const T& newElement, int index)
-{ /*
-    if(index==0)
+{/*
+  if(index==0)
+  {
+    pushFront(newElement);
+  }
+  else
+  {
+    if(index==counter)
     {
-      pushFront(newElement);
+      pushBack(newElement);
     }
     else
     {
-      if(index==counter)
+      Node N;
+      std::shared_ptr<Node> dodatkowy =N.newNode(newElement);
+      if(head == nullptr)
       {
-        pushBack(newElement);
+        head = dodatkowy;
       }
-      else
+      else 
       {
-        Node N;
-        std::shared_ptr<Node> dodatkowy =N.newNode(newElement);
-        if(head == nullptr)
+        std::shared_ptr<Node> jump(nullptr);
+        jump=head;
+        for(int i=0; i<=index; i++)
         {
-          head = dodatkowe;
+          jump=jump->next;
         }
-        else 
-        {
-          std::shared_ptr<Node> jump(nullptr);
-          jump=head;
-          for(int i=0; i<=index; i++)
-          {
-            jump=jump->next;
-          }
-          dodatkowy->before = jump;
-          dodatkowy->next = jump->next;
-          ////////////////////////////////////zapytać czy można zrobić podwójny wektor -> cos -> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-        }
+        dodatkowy->before = jump;
+        dodatkowy->next = jump->next;
+        ////////////////////////////////////zapytać czy można zrobić podwójny wektor -> cos -> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
       }
     }
-    */
+  }*/
 }
 
 template <typename T>
@@ -417,9 +436,22 @@ typename List<T>::ConstIterator List<T>::cend() const
 template <typename T>
 T& List<T>::operator[](int index)
 {
-    // TODO: implement
-    static T element;
-    return element;
+  static T element;
+  std::shared_ptr<Node> dodatkowy(nullptr);
+  if(index==0)
+    {
+      dodatkowy=head;
+    }
+  else
+    {
+      dodatkowy=head
+      for(int x=0; x<=i; x++)
+      {
+        dodatkowy=dodatkowy->next;
+      }   
+    }
+  element=dodatkowy->value;
+  return element;
 }
 
 #endif /* LIST_HPP_ */

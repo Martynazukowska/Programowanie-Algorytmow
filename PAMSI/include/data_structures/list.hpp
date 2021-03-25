@@ -296,7 +296,7 @@ typename List<T>::ConstIterator List<T>::ConstIterator::operator[](std::size_t i
   else
     {
       dodatkowy=n_ptr;
-      for(int x=0; x<=i; x++)
+      for(int x=0; x<i; x++)
       {
         dodatkowy=dodatkowy->next;
       }   
@@ -363,7 +363,7 @@ void List<T>::pushFront(const T& newElement)
 }
 template <typename T>
 void List<T>::insert(const T& newElement, int index)
-{/*
+{
   if(index==0)
   {
     pushFront(newElement);
@@ -384,18 +384,24 @@ void List<T>::insert(const T& newElement, int index)
       }
       else 
       {
+        index=index-1;
         std::shared_ptr<Node> jump(nullptr);
         jump=head;
-        for(int i=0; i<=index; i++)
+        for(int i=0; i<index; i++)
         {
           jump=jump->next;
         }
         dodatkowy->before = jump;
         dodatkowy->next = jump->next;
+        //dodatkowy->before = jump;
+        dodatkowy->next->before=dodatkowy;
+        jump->next=dodatkowy;
+
         ////////////////////////////////////zapytać czy można zrobić podwójny wektor -> cos -> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
       }
     }
-  }*/
+  }
+  counter++;
 }
 
 template <typename T>
@@ -444,8 +450,8 @@ T& List<T>::operator[](int index)
     }
   else
     {
-      dodatkowy=head
-      for(int x=0; x<=i; x++)
+      dodatkowy=head;
+      for(int x=0; x<index; x++)
       {
         dodatkowy=dodatkowy->next;
       }   

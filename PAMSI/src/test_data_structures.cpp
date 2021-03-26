@@ -57,7 +57,7 @@ TEST_CASE("List/insert")
     list.insert(3, 1);
     list.insert(4, 0);
 
-    REQUIRE(list[1] == 4);
+    REQUIRE(list[0] == 4);
     REQUIRE(list[1] == 1);
     REQUIRE(list[2] == 3);
     REQUIRE(list[3] == 2);

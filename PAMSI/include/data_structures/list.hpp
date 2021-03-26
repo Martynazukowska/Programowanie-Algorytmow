@@ -364,6 +364,8 @@ void List<T>::pushFront(const T& newElement)
 template <typename T>
 void List<T>::insert(const T& newElement, int index)
 {
+  Node N;
+  std::shared_ptr<Node> dodatkowy =N.newNode(newElement);
   if(index==0)
   {
     pushFront(newElement);
@@ -376,29 +378,36 @@ void List<T>::insert(const T& newElement, int index)
     }
     else
     {
-      Node N;
-      std::shared_ptr<Node> dodatkowy =N.newNode(newElement);
-      if(head == nullptr)
+      /*if(index < -1 || index > counter)  //czemu to nie działa???????????????????????????????????????????????????????????????????????????????
       {
-        head = dodatkowy;
+          std::cout<<"Błąd w podawaniu instrukcji \n ";
+          exit(1);
       }
-      else 
-      {
-        index=index-1;
-        std::shared_ptr<Node> jump(nullptr);
-        jump=head;
-        for(int i=0; i<index; i++)
+      else
+      {*/
+        if(head == nullptr)
         {
-          jump=jump->next;
+          head = dodatkowy;
         }
-        dodatkowy->before = jump;
-        dodatkowy->next = jump->next;
-        //dodatkowy->before = jump;
-        dodatkowy->next->before=dodatkowy;
-        jump->next=dodatkowy;
+        else 
+        {
+         index--;
+         std::shared_ptr<Node> jump(nullptr);
+          jump=head;
+          for(int i=0; i<index; i++)
+          {
+            jump=jump->next;
+          }
+          dodatkowy->next = jump->next;
+          dodatkowy->before = jump;
 
-        ////////////////////////////////////zapytać czy można zrobić podwójny wektor -> cos -> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-      }
+          dodatkowy->next->before=dodatkowy; 
+
+          jump->next=dodatkowy;
+
+          ////////////////////////////////////zapytać czy można zrobić podwójny wektor -> cos -> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        }
+      //}
     }
   }
   counter++;
@@ -407,7 +416,25 @@ void List<T>::insert(const T& newElement, int index)
 template <typename T>
 void List<T>::remove(const T& element)
 {
-    // tak samo jak w folderze wczesniej 
+  /*if(head == nullptr)
+  {
+    std::cout<<"Lista jest juz pusta \n";
+    exit(1);
+  }
+  std::shared_ptr<Node> jump(nullptr);
+  jump =head;
+
+  for(int i=0; i<counter; i++)
+  {
+    if(jump->value == element)
+    {
+      jump->before->next= jump->next;
+      jump->before=nullptr;
+      jump->next=nullptr;
+    }
+    jump=jump->next;
+  }*/
+
 }
 
 template <typename T>

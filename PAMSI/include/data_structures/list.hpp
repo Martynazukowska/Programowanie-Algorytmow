@@ -1,6 +1,7 @@
 #ifndef LIST_HPP_
 #define LIST_HPP_
 //using namespace std;
+#include <iostream>
 
 template <typename T>
 class List
@@ -328,6 +329,7 @@ void List<T>::pushBack(const T& newElement)
   if(head==nullptr)
   {
     head=dodatkowy;
+    tail=dodatkowy;
   }
   else 
   {
@@ -340,6 +342,7 @@ void List<T>::pushBack(const T& newElement)
 
     }
     jump->next = dodatkowy;
+    tail=dodatkowy;
   }
   counter++;   
 }
@@ -378,13 +381,13 @@ void List<T>::insert(const T& newElement, int index)
     }
     else
     {
-      /*if(index < -1 || index > counter)  //czemu to nie działa???????????????????????????????????????????????????????????????????????????????
+      if(index < 0 /*|| counter-1<index*/)  //czemu to nie działa???????????????????????????????????????????????????????????????????????????????
       {
           std::cout<<"Błąd w podawaniu instrukcji \n ";
           exit(1);
       }
       else
-      {*/
+      {
         if(head == nullptr)
         {
           head = dodatkowy;
@@ -407,7 +410,7 @@ void List<T>::insert(const T& newElement, int index)
 
           ////////////////////////////////////zapytać czy można zrobić podwójny wektor -> cos -> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         }
-      //}
+      }
     }
   }
   counter++;
@@ -416,7 +419,9 @@ void List<T>::insert(const T& newElement, int index)
 template <typename T>
 void List<T>::remove(const T& element)
 {
-  /*if(head == nullptr)
+  int Pomicniczy;
+  Pomicniczy=0;
+  if(head == nullptr)
   {
     std::cout<<"Lista jest juz pusta \n";
     exit(1);
@@ -424,16 +429,45 @@ void List<T>::remove(const T& element)
   std::shared_ptr<Node> jump(nullptr);
   jump =head;
 
-  for(int i=0; i<counter; i++)
+  for(int i=0; jump->value != element; i++)
   {
-    if(jump->value == element)
-    {
-      jump->before->next= jump->next;
-      jump->before=nullptr;
-      jump->next=nullptr;
-    }
     jump=jump->next;
-  }*/
+    Pomicniczy++;
+  }
+    if(Pomicniczy==0)
+    {
+      head=jump->next; //zeby nie zgubic
+      jump->next->before=jump->before;
+      jump->next=nullptr;
+      jump->before=nullptr;
+    }
+    else
+    {
+       if(Pomicniczy==counter-1)
+      {
+        tail=jump->before; //zeby nie zgubic
+        jump->before->next=jump->next;
+        jump->next=nullptr;
+        jump->before=nullptr;
+      }
+      else
+      {
+        if(Pomicniczy==counter)
+        {
+          std::cout<<"Lista nie ma takiego elementu\n";
+          exit(1);
+        }
+        else
+        {
+          /*jump->before->next= jump->next;
+          jump->next->before= jump->before;
+          jump->next=nullptr;
+          jump->before=nullptr; ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????*/
+        }
+      }
+    }
+    counter--;
+    Pomicniczy--;
 
 }
 

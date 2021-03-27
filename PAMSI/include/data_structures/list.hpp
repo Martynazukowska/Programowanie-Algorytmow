@@ -41,7 +41,7 @@ class List
         using reference = const T&;
         using iterator_category = std::random_access_iterator_tag;
 
-        Iterator(Node* node = nullptr);
+        Iterator(std::shared_ptr<Node> node = nullptr);
 
         Iterator operator++();
         Iterator operator--();
@@ -68,7 +68,7 @@ class List
       using reference = const T&;
       using iterator_category = std::random_access_iterator_tag;
 
-      ConstIterator(Node* node = nullptr);
+      ConstIterator(std::shared_ptr<Node> node = nullptr);
 
       ConstIterator operator++();
       ConstIterator operator--();
@@ -95,9 +95,9 @@ class List
 };
 
 template <typename T>
-List<T>::Iterator::Iterator(typename List<T>::Node* node)
+List<T>::Iterator::Iterator(typename std::shared_ptr<List<T>::Node> node)
 {
-
+   n_ptr=node;
 }
 
 template <typename T>
@@ -207,8 +207,9 @@ T& List<T>::Iterator::operator*()
 
 
 template <typename T>
-List<T>::ConstIterator::ConstIterator(typename List<T>::Node* node)
+List<T>::ConstIterator::ConstIterator(std::shared_ptr< List<T>::Node> node)
 {
+  n_ptr=node;
 }
 
 template <typename T>
@@ -407,8 +408,6 @@ void List<T>::insert(const T& newElement, int index)
           dodatkowy->next->before=dodatkowy; 
 
           jump->next=dodatkowy;
-
-          ////////////////////////////////////zapytać czy można zrobić podwójny wektor -> cos -> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         }
       }
     }
@@ -419,85 +418,46 @@ void List<T>::insert(const T& newElement, int index)
 template <typename T>
 void List<T>::remove(const T& element)
 {
-  int Pomicniczy;
-  Pomicniczy=0;
-  if(head == nullptr)
-  {
-    std::cout<<"Lista jest juz pusta \n";
-    exit(1);
-  }
-  std::shared_ptr<Node> jump(nullptr);
-  jump =head;
 
-  for(int i=0; jump->value != element; i++)
-  {
-    jump=jump->next;
-    Pomicniczy++;
-  }
-    if(Pomicniczy==0)
+  auto tmp = head;
+  while(tmp) // != nullptr
     {
-      head=jump->next; //zeby nie zgubic
-      jump->next->before=jump->before;
-      jump->next=nullptr;
-      jump->before=nullptr;
-    }
-    else
-    {
-       if(Pomicniczy==counter-1)
-      {
-        tail=jump->before; //zeby nie zgubic
-        jump->before->next=jump->next;
-        jump->next=nullptr;
-        jump->before=nullptr;
-      }
-      else
-      {
-        if(Pomicniczy==counter)
+      if(tmp->next && tmp->next->value == element)
         {
-          std::cout<<"Lista nie ma takiego elementu\n";
-          exit(1);
+          tmp->next = tmp->next->next;
+          
         }
-        else
-        {
-          /*jump->before->next= jump->next;
-          jump->next->before= jump->before;
-          jump->next=nullptr;
-          jump->before=nullptr; ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????*/
-        }
-      }
+      tmp = tmp->next;
     }
-    counter--;
-    Pomicniczy--;
-
+  
 }
 
 template <typename T>
 typename List<T>::Iterator List<T>::begin()
 {
+
     // TODO: implement
-    return Iterator();
+    return Iterator(head);
 }
 
 template <typename T>
 typename List<T>::Iterator List<T>::end()
 {
     // TODO: implement
-    return Iterator();
+    return Iterator(tail->next);
 }
 
 template <typename T>
 typename List<T>::ConstIterator List<T>::cbegin() const
 {
 
-    // TODO: implement
-    return ConstIterator();
+    return ConstIterator(head);
 }
 
 template <typename T>
 typename List<T>::ConstIterator List<T>::cend() const
 {
-    return ConstIterator();
-    // TODO: implement
+    return ConstIterator(tail->next);
 }
 
 template <typename T>

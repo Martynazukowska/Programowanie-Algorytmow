@@ -103,14 +103,13 @@ List<T>::Iterator::Iterator(typename std::shared_ptr<List<T>::Node> node)
 template <typename T>
 typename List<T>::Iterator List<T>::Iterator::operator++()
 {
-  return Iterator();
+  return Iterator(n_ptr->next);
 }
 
 template <typename T>
 typename List<T>::Iterator List<T>::Iterator::operator--()
 {
-  // TODO: implement
-  return Iterator();
+  return Iterator(n_ptr->before);
 }
 
 template <typename T>
@@ -142,14 +141,27 @@ bool List<T>::Iterator::operator!=(const Iterator& other) const
 template <typename T>
 bool List<T>::Iterator::operator>(const Iterator& other) const
 {
-  return true;
+  if(n_ptr > other.n_ptr)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 template <typename T>
 bool List<T>::Iterator::operator<(const Iterator& other) const
 {
-  // TODO: implement
-  return true;
+  if(n_ptr < other.n_ptr)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 template <typename T>
@@ -199,6 +211,7 @@ T& List<T>::Iterator::operator*()
 {
     // TODO: implement
     static T element;
+    //element=n_ptr;
     return element;
 }
 
@@ -215,15 +228,13 @@ List<T>::ConstIterator::ConstIterator(std::shared_ptr< List<T>::Node> node)
 template <typename T>
 typename List<T>::ConstIterator List<T>::ConstIterator::operator++()
 {
-  // TODO: implement
-  return ConstIterator();
+  return ConstIterator(n_ptr->next);
 }
 
 template <typename T>
 typename List<T>::ConstIterator List<T>::ConstIterator::operator--()
 {
-  // TODO: implement
-  return ConstIterator();
+  return ConstIterator(n_ptr->before);
 }
 
 template <typename T>
@@ -255,14 +266,27 @@ bool List<T>::ConstIterator::operator!=(const ConstIterator& other) const
 template <typename T>
 bool List<T>::ConstIterator::operator>(const ConstIterator& other) const
 {
-  // TODO: implement
-  return true;
+  if(n_ptr > other.n_ptr)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 template <typename T>
 bool List<T>::ConstIterator::operator<(const ConstIterator& other) const
 {
-  // TODO: implement
+  if(n_ptr < other.n_ptr)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
   return true;
 }
 
@@ -309,7 +333,6 @@ typename List<T>::ConstIterator List<T>::ConstIterator::operator[](std::size_t i
 template <typename T>
 const T& List<T>::ConstIterator::operator*()
 {
-    // TODO: implement
     static T element;
     return element;
 }
@@ -382,21 +405,22 @@ void List<T>::insert(const T& newElement, int index)
     }
     else
     {
-      if(index < 0 /*|| counter-1<index*/)  //czemu to nie działa???????????????????????????????????????????????????????????????????????????????
+      if(index < 0 )
       {
           std::cout<<"Błąd w podawaniu instrukcji \n ";
           exit(1);
       }
       else
       {
-        if(head == nullptr)
+        if(index>counter)
         {
-          head = dodatkowy;
+          std::cout<<"wychodzimy poza liste \n ";
+          exit(1);
         }
-        else 
+        else
         {
-         index--;
-         std::shared_ptr<Node> jump(nullptr);
+          index--;
+          std::shared_ptr<Node> jump(nullptr);
           jump=head;
           for(int i=0; i<index; i++)
           {
@@ -408,17 +432,28 @@ void List<T>::insert(const T& newElement, int index)
           dodatkowy->next->before=dodatkowy; 
 
           jump->next=dodatkowy;
+          counter++;
+          
         }
       }
     }
   }
-  counter++;
 }
 
 template <typename T>
 void List<T>::remove(const T& element)
 {
+  std::shared_ptr<Node> pomocniczy=nullptr;
+  if(head->value==element)
+  {
+    pomocniczy=head;
+    head=pomocniczy->next;
+    pomocniczy->next->before=pomocniczy->before;
+    
+    pomocniczy->next=nullptr;
+    pomocniczy->before=nullptr;
 
+  }
   auto tmp = head;
   while(tmp) // != nullptr
     {

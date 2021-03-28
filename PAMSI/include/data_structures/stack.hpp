@@ -1,0 +1,40 @@
+#ifndef STACK_HPP_
+#define STACK_HPP_
+#include "list.hpp"
+
+template <typename T>
+class Stack
+{
+  public:
+    void push(const T& newElement);
+    T pop();
+    List<T> stack;
+};
+
+template <typename T>
+void Stack<T>::push(const T& newElement)
+{
+  stack.pushFront(newElement);
+}
+
+template <typename T>
+T Stack<T>::pop()
+{
+  List<T> pomocniczy;
+  T element;
+  element=stack.head->value;
+
+  pomocniczy.head=stack.head;
+  stack.head=stack.head->next;
+
+  //pomocniczy.head->next->before=pomocniczy.head->before;   ?????????????????????????????????????????????????????????????????????????//
+
+  pomocniczy.head->before=nullptr;
+  pomocniczy.head->next=nullptr;
+  stack.counter--;
+
+  return element;
+
+}
+
+#endif /* STACK_HPP_ */

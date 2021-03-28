@@ -148,8 +148,8 @@ TEST_CASE("PriorityQueue")
     queue.enqueue(3, 5);
     queue.enqueue(2, 30);
 
-    REQUIRE(queue.dequeue() == 3);
-    REQUIRE(queue.dequeue() == 1);
     REQUIRE(queue.dequeue() == 2);
+    REQUIRE(queue.dequeue() == 1);
+    REQUIRE(queue.dequeue() == 3);
 }
 

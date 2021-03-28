@@ -624,3 +624,17 @@ data_structures/queue.hpp
 data_structures/stack.hpp
 /home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSI/src/data_structures/stack.hpp
 
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSI/src/test_stl_data_structures.cpp
+catch2/catch.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSI/src/catch2/catch.hpp
+data_structures/list.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSI/src/data_structures/list.hpp
+data_structures/map.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSI/src/data_structures/map.hpp
+data_structures/priority_queue.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSI/src/data_structures/priority_queue.hpp
+data_structures/queue.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSI/src/data_structures/queue.hpp
+data_structures/stack.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSI/src/data_structures/stack.hpp
+

@@ -20,20 +20,11 @@ void Queue<T>::enqueue(const T& newElement)
 template <typename T>
 T Queue<T>::dequeue()
 {
-    T element;
-    List<T> pomocniczy;
-    element=queue.head->value;
+  auto element=queue[0];
 
-    pomocniczy.head=queue.head;
-    queue.head=queue.head->next;
+  queue.remove_first_elem();
 
-  //pomocniczy.head->next->before=pomocniczy.head->before;
-
-    pomocniczy.head->before=nullptr;
-    pomocniczy.head->next=nullptr;
-    queue.counter--;
-
-    return element;
+  return element;
 }
 
 #endif /* QUEUE_HPP_ */

@@ -87,6 +87,7 @@ class List
     void pushFront(const T& newElement);
     void insert(const T& newElement, int index);
     void remove(const T& element);
+    void remove_first_elem();
     Iterator begin();
     Iterator end();
     ConstIterator cbegin() const;
@@ -333,9 +334,8 @@ typename List<T>::ConstIterator List<T>::ConstIterator::operator[](std::size_t i
 template <typename T>
 const T& List<T>::ConstIterator::operator*()
 {
-    static T element;
-
-    return element;
+    return n_ptr->value;
+    
 }
 
 
@@ -446,13 +446,7 @@ void List<T>::remove(const T& element)
   std::shared_ptr<Node> pomocniczy=nullptr;
   if(head->value==element)
   {
-    pomocniczy=head;
-    head=pomocniczy->next;
-    pomocniczy->next->before=pomocniczy->before;
-    
-    pomocniczy->next=nullptr;
-    pomocniczy->before=nullptr;
-
+    remove_first_elem();
   }
   auto tmp = head;
   while(tmp) // != nullptr
@@ -465,6 +459,26 @@ void List<T>::remove(const T& element)
       tmp = tmp->next;
     }
   
+}
+template <typename T>
+void List<T>::remove_first_elem()
+{
+  if(counter==0)
+  {
+    std::cout<<"Struktura jest pusta nie mozna usunąć elementu\n";
+    exit(1);
+  }
+  else
+  {
+    std::shared_ptr<Node> pomocniczy=nullptr;
+    pomocniczy=head;
+    head=pomocniczy->next;
+    //pomocniczy->next->before=pomocniczy->before;
+    
+    pomocniczy->next=nullptr;
+    pomocniczy->before=nullptr;
+
+  }
 }
 
 template <typename T>

@@ -8,7 +8,7 @@ class List
 {
   public:
     class Node; //mówimy że będzie , później rozpiszemy 
-    T counter; 
+    T counter=0; 
     std::shared_ptr<Node> head =nullptr;
     std::shared_ptr<Node> tail =nullptr;
     
@@ -334,6 +334,7 @@ template <typename T>
 const T& List<T>::ConstIterator::operator*()
 {
     static T element;
+
     return element;
 }
 
@@ -419,10 +420,9 @@ void List<T>::insert(const T& newElement, int index)
         }
         else
         {
-          index--;
           std::shared_ptr<Node> jump(nullptr);
           jump=head;
-          for(int i=0; i<index; i++)
+          for(int i=0; i<index-1; i++)
           {
             jump=jump->next;
           }

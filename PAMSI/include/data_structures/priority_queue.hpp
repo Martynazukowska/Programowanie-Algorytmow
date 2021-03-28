@@ -31,57 +31,35 @@ void PriorityQueue<T>::enqueue(const T& newElement, int priority)
 
   }
 
-  std::cout<<"\n"<<pomocniczy<<"\n";
   if(P_Queue.counter==0)
   {
     P_Queue.pushBack(newElement);
-    std::cout<<P_Queue.counter;
   }
-
-  std::cout<<P_Queue.counter<<"\n";
-  /*else
+  else
   {
-    //P_Queue.insert(newElement, pomocniczy);
+    P_Queue.insert(newElement, pomocniczy);
   }
-  */
-
-
-
-
-  /*List<T> jump;
-  jump.head=priorityqueue.queue.head;
-
-  Priority=priorityqueue.queue.head;
-  Priority->Waga=priorityqueue.queue.head;
-  Priority->value=newElement;
-
-  int pomocnicza;
-
-  for(int i=0; i<priorityqueue.queue.counter || priority<=Priority->value; i++)
-  {
-    pomocnicza++;
-  }
-  priorityqueue.queue.insert(newElement,pomocniczy);*/
+  
 }
 
 template <typename T>
 T PriorityQueue<T>::dequeue()
 {
-  /*
+  T element;
   List<T> pomocniczy;
   element=P_Queue.head->value;
 
   pomocniczy.head=P_Queue.head;
   P_Queue.head=P_Queue.head->next;
 
-  //pomocniczy.head->next->before=pomocniczy.head->before;
+  //pomocniczy.head->next->before=pomocniczy.head->before;   ??????????????????????????????????????????????????????????????????????????????????????????????????????????????????/
 
   pomocniczy.head->before=nullptr;
   pomocniczy.head->next=nullptr;
   P_Queue.counter--;
-  */
+
   // TODO: implement
-  return T();
+  return element;
 }
 
 #endif /* PRIORITY_QUEUE_HPP_ */

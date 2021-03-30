@@ -350,8 +350,8 @@ template <typename T>
 void List<T>::pushBack(const T& newElement)
 {
   Node N;
-  std::shared_ptr<Node> dodatkowy = N.newNode(newElement); //inteligentny wskaźnik zawierający odpowiednia wartość 
-  if(head==nullptr)
+  std::shared_ptr<Node> dodatkowy = N.newNode(newElement);      //inteligentny wskaźnik zawierający odpowiednia wartość 
+  if(head==nullptr)                                            //kiedy lista jest pusta
   {
     head=dodatkowy;
     tail=dodatkowy;
@@ -359,34 +359,35 @@ void List<T>::pushBack(const T& newElement)
   else 
   {
 
-    std::shared_ptr<Node> jump(nullptr);
+    std::shared_ptr<Node> jump(nullptr);                      //dodatkowy inteligentny wskaznik aby mozna było z łatwością poruszać po liscie i nic w niej nie zienic
     jump = head;
-    for(int i=0; jump->next != nullptr; i++)
+    for(int i=0; jump->next != nullptr; i++)                 // do momentku napotkania konca listy 
     {
-      jump = jump->next;
+      jump = jump->next;                                   //przejscie na kolejny element 
 
     }
-    jump->next = dodatkowy;
+    jump->next = dodatkowy;                              // dodanie nowego elementu
     tail=dodatkowy;
   }
-  counter++;   
+  counter++;                                           //dodajemy do warotosci ilosci elementow listy 
 }
 template <typename T>
 void List<T>::pushFront(const T& newElement)
 {
   Node N;
-  std::shared_ptr<Node> dodatkowy = N.newNode(newElement);
-  if(head==nullptr)
+  std::shared_ptr<Node> dodatkowy = N.newNode(newElement);                  //dodatkowy inteligentny wskaznik aby mozna było z łatwością poruszać po liscie i nic w niej nie zienic
+  if(head==nullptr)                                                        //kiedy lista jest pusta 
   {
-    head=dodatkowy;
+    head=dodatkowy; 
+    tail=dodatkowy;
   }
   else
   {
     dodatkowy->next =head;
     head->before = dodatkowy;
-    head = dodatkowy;
+    head = dodatkowy;                                                 //nowy head
   }
-  counter ++;
+  counter ++;                                                        //dodajemy do wartości ilosci elementów listy 
 
 }
 template <typename T>
@@ -394,33 +395,33 @@ void List<T>::insert(const T& newElement, int index)
 {
   Node N;
   std::shared_ptr<Node> dodatkowy =N.newNode(newElement);
-  if(index==0)
+  if(index==0)                                                            // przypadek 1. kiedy jestesmy na poczatku listy 
   {
     pushFront(newElement);
   }
   else
   {
-    if(index==counter)
+    if(index==counter)                                                    // przypadek 2. kiedy jestesmy na koncu listy 
     {
       pushBack(newElement);
     }
     else
     {
-      if(index < 0 )
+      if(index < 0 )                                                     // przypadek 3. kiedy index jest ujemny 
       {
           std::cout<<"Błąd w podawaniu instrukcji \n ";
           exit(1);
       }
       else
       {
-        if(index>counter)
+        if(index>counter)                                               // przypadek 4. kiedy wybrany index nie nalezy do listy 
         {
           std::cout<<"wychodzimy poza liste \n ";
           exit(1);
         }
-        else
+        else                                                           // przypadek 5. kiedy index znajduje sie w srodku listy 
         {
-          std::shared_ptr<Node> jump(nullptr);
+          std::shared_ptr<Node> jump(nullptr);                       //pomocnicy aby łatwiej było sie poruszac po liscie                       
           jump=head;
           for(int i=0; i<index-1; i++)
           {
@@ -432,7 +433,7 @@ void List<T>::insert(const T& newElement, int index)
           dodatkowy->next->before=dodatkowy; 
 
           jump->next=dodatkowy;
-          counter++;
+          counter++;                                            //dodanie  do wartosci ilosci elementow listy  
           
         }
       }
@@ -443,22 +444,22 @@ void List<T>::insert(const T& newElement, int index)
 template <typename T>
 void List<T>::remove(const T& element)
 {
-  std::shared_ptr<Node> pomocniczy=nullptr;
+  std::shared_ptr<Node> pomocniczy=nullptr;                  //dodatkowy inteligentny wskaznik aby mozna było z łatwością poruszać po liscie i nic w niej nie zienic                      
   if(head->value==element)
   {
-    remove_first_elem();
+    remove_first_elem();                                    //nowa funkcja napisana nizej 
   }
   auto tmp = head;
-  while(tmp) // != nullptr
+  while(tmp)                                               // != nullptr
     {
-      if(tmp->next && tmp->next->value == element)
+      if(tmp->next && tmp->next->value == element)        // sprawdzamyy przez elemen poprzedzajacy element sprawdzajacy 
         {
           tmp->next = tmp->next->next;
           
         }
       tmp = tmp->next;
     }
-  
+  counter--;
 }
 template <typename T>
 void List<T>::remove_first_elem()
@@ -470,7 +471,7 @@ void List<T>::remove_first_elem()
   }
   else
   {
-    std::shared_ptr<Node> pomocniczy=nullptr;
+    std::shared_ptr<Node> pomocniczy=nullptr;                 //dodatkowy inteligentny wskaznik aby mozna było z łatwością poruszać po liscie i nic w niej nie zienic
     pomocniczy=head;
     head=pomocniczy->next;
     //pomocniczy->next->before=pomocniczy->before;
@@ -479,6 +480,7 @@ void List<T>::remove_first_elem()
     pomocniczy->before=nullptr;
 
   }
+  counter--;
 }
 
 template <typename T>
@@ -513,7 +515,7 @@ template <typename T>
 T& List<T>::operator[](int index)
 {
   static T element;
-  std::shared_ptr<Node> dodatkowy(nullptr);
+  std::shared_ptr<Node> dodatkowy(nullptr);                 //dodatkowy inteligentny wskaznik aby mozna było z łatwością poruszać po liscie i nic w niej nie zienic
   if(index==0)
     {
       dodatkowy=head;

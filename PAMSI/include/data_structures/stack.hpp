@@ -14,15 +14,15 @@ class Stack
 template <typename T>
 void Stack<T>::push(const T& newElement)
 {
-  stack.pushFront(newElement);
+  stack.pushFront(newElement);              //dodac element do stosu 
 }
 
 template <typename T>
 T Stack<T>::pop()
 {
-  auto element=stack[0];
+  auto element=stack[0];                       // przypisujemy pierwszy element stosu z wartosciami 
 
-  stack.remove_first_elem();
+  stack.remove_first_elem();                  // usuwamy pierwszy element w stosie
 
   return element;
 }

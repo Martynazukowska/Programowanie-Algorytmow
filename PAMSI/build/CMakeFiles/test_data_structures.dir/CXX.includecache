@@ -595,6 +595,12 @@ iostream
 -
 
 ../include/data_structures/map.hpp
+list.hpp
+../include/data_structures/list.hpp
+string
+-
+priority_queue.hpp
+../include/data_structures/priority_queue.hpp
 
 ../include/data_structures/priority_queue.hpp
 queue.hpp

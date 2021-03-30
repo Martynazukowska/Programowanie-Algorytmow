@@ -11,9 +11,9 @@ using namespace std::string_literals;
 
 TEST_CASE("Map", "insert/operator[]")
 {
-    Map<int, std::string> hashArray;
+    Map<std::string, int> hashArray;
 
-    std::map<int, std::string> refHashArray = {{1, "one"s}, {2, "two"s}, {3, "three"s}};
+    std::map<std::string, int > refHashArray = {{"one"s,1}, {"two"s,2}, {"three"s,3}};
 
     for(auto& keyValue : refHashArray)
     {

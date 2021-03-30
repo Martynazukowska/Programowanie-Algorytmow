@@ -12,17 +12,17 @@ class Queue
 };
 
 template <typename T>
-void Queue<T>::enqueue(const T& newElement)
+void Queue<T>::enqueue(const T& newElement) 
 {
-    queue.pushBack(newElement);
+    queue.pushBack(newElement);                // dodac element do kolejki
 }
 
 template <typename T>
 T Queue<T>::dequeue()
 {
-  auto element=queue[0];
+  auto element=queue[0];                       // przypisujemy pierwszy element listy z wartosciami 
 
-  queue.remove_first_elem();
+  queue.remove_first_elem();                   // usuwamy pierwszy element w kolejce
 
   return element;
 }

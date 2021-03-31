@@ -104,13 +104,15 @@ List<T>::Iterator::Iterator(typename std::shared_ptr<List<T>::Node> node)
 template <typename T>
 typename List<T>::Iterator List<T>::Iterator::operator++()
 {
-  return Iterator(n_ptr->next);
+  n_ptr=n_ptr->next;
+  return *this;
 }
 
 template <typename T>
 typename List<T>::Iterator List<T>::Iterator::operator--()
 {
-  return Iterator(n_ptr->before);
+  n_ptr=n_ptr->before;
+  return *this;
 }
 
 template <typename T>
@@ -169,21 +171,35 @@ template <typename T>
 typename List<T>::Iterator::difference_type List<T>::Iterator::operator-(const Iterator& other) const
 {
   int dodatkowa=0;
+
   
-  return 0;
+  
+  return dodatkowa;
 }
 
 template <typename T>
 typename List<T>::Iterator List<T>::Iterator::operator+(difference_type diff) const
 {
-  Iterator I();
+  /*Iterator Iter(n_ptr);
+  for(int i=0;i<diff;i++)
+  {
+    if(n_ptr!=nullptr)
+    ++Iter;
+  }
+  return Iter;*/
   return Iterator();
 }
 
 template <typename T>
 typename List<T>::Iterator List<T>::Iterator::operator-(difference_type diff) const
 {
-  // TODO: implement
+  /*Iterator Iter(n_ptr);
+  for(int i=0;i<diff;i++)
+  {
+    if(n_ptr!=nullptr)
+    --Iter;
+  }
+  return Iter;*/
   return Iterator();
 }
 
@@ -210,10 +226,10 @@ typename List<T>::Iterator List<T>::Iterator::operator[](std::size_t i)
 template <typename T>
 T& List<T>::Iterator::operator*()
 {
-    // TODO: implement
-    static T element;
-    //element=n_ptr;
-    return element;
+    /*static T element;
+    element=n_ptr->value;
+    return element;*/
+    return n_ptr->value;
 }
 
 
@@ -301,15 +317,27 @@ typename List<T>::ConstIterator::difference_type List<T>::ConstIterator::operato
 template <typename T>
 typename List<T>::ConstIterator List<T>::ConstIterator::operator+(difference_type diff) const
 {
-  // TODO: implement
-  return Iterator();
+  ConstIterator Iter(n_ptr);
+  for(int i=0;i<diff;i++)
+  {
+    if(n_ptr!=nullptr)
+    ++Iter;
+  }
+  return Iter;
+  //return Iterator();
 }
 
 template <typename T>
 typename List<T>::ConstIterator List<T>::ConstIterator::operator-(difference_type diff) const
 {
-  // TODO: implement
-  return ConstIterator();
+  ConstIterator Iter(n_ptr);
+  for(int i=0;i<diff;i++)
+  {
+    if(n_ptr!=nullptr)
+    --Iter;
+  }
+  return Iter;
+  //return ConstIterator();
 }
 
 template <typename T>
@@ -334,6 +362,7 @@ typename List<T>::ConstIterator List<T>::ConstIterator::operator[](std::size_t i
 template <typename T>
 const T& List<T>::ConstIterator::operator*()
 {
+    
     return n_ptr->value;
     
 }

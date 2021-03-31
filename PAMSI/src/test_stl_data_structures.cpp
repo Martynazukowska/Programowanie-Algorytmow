@@ -138,3 +138,4 @@ TEST_CASE("Stl_PriorityQueue")
     REQUIRE(queue.top() == 1);
     queue.pop();
 }
+

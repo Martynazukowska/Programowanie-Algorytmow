@@ -34,7 +34,7 @@ public:
 template <typename KeyType, typename ValueType>
 void Map<KeyType, ValueType>::insert(const KeyType& key, const ValueType& value)
 {
-  auto index = tab[hash(key)];
+  auto index = hash(key);
 
   tab[index]=value;
 

@@ -8,12 +8,13 @@
 
 int hash(const std::string& key);
 int hash(int key);
+
 #include "data_structures/map.hpp"
 
 int hash(const std::string& key)
 {
   int result = 0;
-  for(int i=0;i<key.length();++i)
+  for(auto i=0;i<key.length();++i)
   {
     result *= static_cast<int>(key[i]);
   }

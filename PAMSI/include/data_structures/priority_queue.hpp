@@ -23,7 +23,7 @@ void PriorityQueue<T>::enqueue(const T& newElement, int priority)
   
   std::sort(Priority_Q.begin(), Priority_Q.end());     // sortujemy liste z wagami 
 
-  for(int i=0; i<=Priority_Q.counter; i++)             // szukamy dodanego przez nas wczesiej elementu gdzie sie znajduje po przesortowaniu 
+  for(int i=0; i<Priority_Q.counter; i++)             // szukamy dodanego przez nas wczesiej elementu gdzie sie znajduje po przesortowaniu 
   {
     if(Priority_Q[i]>priority)
     {

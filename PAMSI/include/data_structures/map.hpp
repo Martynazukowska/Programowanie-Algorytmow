@@ -25,26 +25,8 @@ public:
   void insert(const KeyType& key ,const ValueType& value);
   ValueType& operator[](const KeyType& key);
   void remove(const KeyType& key);
-  int hash(const std::string& key);
-  int hash(int key);
 
 };
-
-template <typename KeyType, typename ValueType>
-int hash(const std::string& key)
-{
-  int result = 0;
-  for(int i=0;i<key.length();++i)
-  {
-    result *= static_cast<int>(key[i]);
-  }
-  return result % 100;
-}
-template <typename KeyType, typename ValueType>
-int hash(int key)
-{
-  return key % 100;
-}
 
 
 //template <typename KeyType, typename ValueType, typename Hashfunction>
@@ -52,9 +34,9 @@ int hash(int key)
 template <typename KeyType, typename ValueType>
 void Map<KeyType, ValueType>::insert(const KeyType& key, const ValueType& value)
 {
-  //auto index = tab[hash(key)];
-  
-  //tab[index]=value;
+  auto index = tab[hash(key)];
+
+  tab[index]=value;
 
 }
 
@@ -65,7 +47,7 @@ template <typename KeyType, typename ValueType>
 ValueType &Map<KeyType, ValueType>::operator[](const KeyType &key) {
 
   static ValueType value;
-  //value=tab[hash(key)];
+  value=tab[hash(key)];
   return value;
 
 }
@@ -74,7 +56,7 @@ ValueType &Map<KeyType, ValueType>::operator[](const KeyType &key) {
 template <typename KeyType, typename ValueType>
 void Map<KeyType, ValueType>::remove(const KeyType &key)
     {
-      //tab[hash(key)]=nullptr;
+      tab[hash(key)]=nullptr;
     }
 
 #endif /* MAP_HPP_ */

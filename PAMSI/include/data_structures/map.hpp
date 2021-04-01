@@ -13,6 +13,8 @@
 //using Hashfunction = int(*)(const Key&);  // dodatkowo
 
 //template<typename  KeyType, typename ValueType, typename Hashfunction>
+
+
 template <typename KeyType, typename ValueType>
 class Map
 { 
@@ -37,6 +39,7 @@ void Map<KeyType, ValueType>::insert(const KeyType& key, const ValueType& value)
   auto index = hash(key);
 
   tab[index]=value;
+  std::cout<<value<<tab[hash(key)]<<" k\n";
 
 }
 
@@ -48,6 +51,7 @@ ValueType &Map<KeyType, ValueType>::operator[](const KeyType &key) {
 
   static ValueType value;
   value=tab[hash(key)];
+
   return value;
 
 }

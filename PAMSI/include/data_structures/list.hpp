@@ -8,7 +8,7 @@ class List
 {
   public:
     class Node; //mówimy że będzie , później rozpiszemy 
-    T counter=0; 
+    int counter=0; 
     std::shared_ptr<Node> head =nullptr;
     std::shared_ptr<Node> tail =nullptr;
     
@@ -104,6 +104,12 @@ List<T>::Iterator::Iterator(typename std::shared_ptr<List<T>::Node> node)
 template <typename T>
 typename List<T>::Iterator List<T>::Iterator::operator++()
 {
+  if(n_ptr==nullptr)
+  {
+    std::cout<<"blad";
+    exit(1);
+  }
+
   n_ptr=n_ptr->next;
   return *this;
 }
@@ -111,6 +117,12 @@ typename List<T>::Iterator List<T>::Iterator::operator++()
 template <typename T>
 typename List<T>::Iterator List<T>::Iterator::operator--()
 {
+  if(n_ptr==nullptr)
+  {
+    std::cout<<"blad";
+    exit(1);
+  }
+
   n_ptr=n_ptr->before;
   return *this;
 }
@@ -129,34 +141,56 @@ bool List<T>::Iterator::operator!=(const Iterator& other) const
 
 template <typename T>
 bool List<T>::Iterator::operator>(const Iterator& other) const
-{
-    for(auto tymczasowy = n_ptr;tymczasowy!=nullptr; tymczasowy=tymczasowy->next)
+{ 
+  Iterator Iter(n_ptr);
+  for( int i=0 ;Iter.n_ptr!=nullptr; i++)
+    {
+      if(Iter==other)
+      {
+       return false;
+      }
+      ++Iter;
+    }                                                           
+    return true;                                              
+    /* for( std::shared_ptr<Node> tymczasowy = n_ptr;tymczasowy->next!=nullptr; tymczasowy=tymczasowy->next)
     {
       if(tymczasowy==other.n_ptr)
       {
        return false;
-     }
-  }
+      }
+    }
+    return true;*/
 }
 
 template <typename T>
 bool List<T>::Iterator::operator<(const Iterator& other) const
 {
-  for(auto tymczasowy = n_ptr;tymczasowy!=nullptr; tymczasowy=tymczasowy->next)
+  Iterator Iter(n_ptr);
+  for( int i=0 ;Iter.n_ptr!=nullptr; i++)
+    {
+      if(Iter==other)
+      {
+       return false;
+      }
+      --Iter;
+    }
+    return true;
+  /*for( std::shared_ptr<Node> tymczasowy = n_ptr; tymczasowy->before!=nullptr; tymczasowy=tymczasowy->before)
   {
     if(tymczasowy==other.n_ptr)
     {
-      return true;
+      return false;
     }
   }
+  return true;*/
 }
 
 template <typename T>
 typename List<T>::Iterator::difference_type List<T>::Iterator::operator-(const Iterator& other) const
-{
+{ 
   int dodatkowa=0;
   auto tymczasowy = (*this>other) ? other.n_ptr : n_ptr;
-  for(;tymczasowy !=nullptr;tymczasowy=tymczasowy->next)
+  for(int i=0;tymczasowy !=nullptr;tymczasowy=tymczasowy->next)
   {
     dodatkowa++;
   }
@@ -166,26 +200,26 @@ typename List<T>::Iterator::difference_type List<T>::Iterator::operator-(const I
 template <typename T>
 typename List<T>::Iterator List<T>::Iterator::operator+(difference_type diff) const
 {
-  /*Iterator Iter(n_ptr);
-  for(int i=0;i<diff;i++)
-  {
-    if(n_ptr!=nullptr)
-    ++Iter;
-  }
-  return Iter;*/
+//   Iterator Iter(n_ptr);
+//   for(int i=0;i<diff;i++)
+//   {
+//     if(n_ptr!=nullptr)
+//     ++Iter;
+//   }
+//   return Iter;
   return Iterator();
 }
 
 template <typename T>
 typename List<T>::Iterator List<T>::Iterator::operator-(difference_type diff) const
 {
-  /*Iterator Iter(n_ptr);
-  for(int i=0;i<diff;i++)
-  {
-    if(n_ptr!=nullptr)
-    --Iter;
-  }
-  return Iter;*/
+  // Iterator Iter(n_ptr);
+  // for(int i=0;i<diff;i++)
+  // {
+  //   if(n_ptr!=nullptr)
+  //   --Iter;
+  // }
+  // return Iter;
   return Iterator();
 }
 
@@ -266,25 +300,45 @@ bool List<T>::ConstIterator::operator!=(const ConstIterator& other) const
 template <typename T>
 bool List<T>::ConstIterator::operator>(const ConstIterator& other) const
 {
-  for(auto tymczasowy = n_ptr;tymczasowy!=nullptr; tymczasowy=tymczasowy->next)
-  {
-    if(tymczasowy==other.n_ptr)
+  Iterator Iter(n_ptr);
+  for( int i=0 ;Iter.n_ptr!=nullptr; i++)
     {
-      return false;
-    }
-  }
+      if(Iter==other)
+      {
+       return false;
+      }
+      ++Iter;
+    }                                                           
+    return true;    
+  // for(auto tymczasowy = n_ptr;tymczasowy!=nullptr; tymczasowy=tymczasowy->next)
+  // {
+  //   if(tymczasowy==other.n_ptr)
+  //   {
+  //     return false;
+  //   }
+  // }
 }
 
 template <typename T>
 bool List<T>::ConstIterator::operator<(const ConstIterator& other) const
 {
-  for(auto tymczasowy = n_ptr;tymczasowy!=nullptr; tymczasowy=tymczasowy->next)
-  {
-    if(tymczasowy==other.n_ptr)
+  Iterator Iter(n_ptr);
+  for( int i=0 ;Iter.n_ptr!=nullptr; i++)
     {
-      return true;
+      if(Iter==other)
+      {
+       return false;
+      }
+      --Iter;
     }
-  }
+    return true;
+  // for(auto tymczasowy = n_ptr;tymczasowy!=nullptr; tymczasowy=tymczasowy->next)
+  // {
+  //   if(tymczasowy==other.n_ptr)
+  //   {
+  //     return true;
+  //   }
+  // }
 }
 
 template <typename T>

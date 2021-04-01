@@ -16,7 +16,7 @@ int hash(const std::string& key)
   int result = 0;
   for(auto i=0;i<key.length();i++)
   {
-    result += (i+1)*static_cast<int>(key[i]);
+    result += (i+1)*static_cast<int>(key[i]); 
   }
   return result %100;
 }
@@ -32,7 +32,7 @@ TEST_CASE("Map", "insert/operator[]")
 {
     Map<std::string, int> hashArray;
 
-    std::map<std::string, int > refHashArray = {{"one"s,1}, {"two"s,2},{"three"s,3}}; //dlaczego ???????????????????????
+    std::map<std::string, int > refHashArray = {{"one"s,1}, {"two"s,2},{"three"s,3}}; 
 
     for(auto& keyValue : refHashArray)
     {

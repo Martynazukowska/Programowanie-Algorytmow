@@ -118,52 +118,36 @@ typename List<T>::Iterator List<T>::Iterator::operator--()
 template <typename T>
 bool List<T>::Iterator::operator==(const Iterator& other) const
 {
-  if(n_ptr == other.n_ptr)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+  return n_ptr == other.n_ptr;
 }
 
 template <typename T>
 bool List<T>::Iterator::operator!=(const Iterator& other) const
 {
-  if(n_ptr != other.n_ptr)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+    return !(*this==other);
 }
 
 template <typename T>
 bool List<T>::Iterator::operator>(const Iterator& other) const
 {
-  if(n_ptr > other.n_ptr)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
+    for(auto tymczasowy = n_ptr;tymczasowy!=nullptr; tymczasowy=tymczasowy->next)
+    {
+      if(tymczasowy==other.n_ptr)
+      {
+       return false;
+     }
   }
 }
 
 template <typename T>
 bool List<T>::Iterator::operator<(const Iterator& other) const
 {
-  if(n_ptr < other.n_ptr)
+  for(auto tymczasowy = n_ptr;tymczasowy!=nullptr; tymczasowy=tymczasowy->next)
   {
-    return true;
-  }
-  else
-  {
-    return false;
+    if(tymczasowy==other.n_ptr)
+    {
+      return true;
+    }
   }
 }
 
@@ -171,9 +155,11 @@ template <typename T>
 typename List<T>::Iterator::difference_type List<T>::Iterator::operator-(const Iterator& other) const
 {
   int dodatkowa=0;
-
-  
-  
+  auto tymczasowy = (*this>other) ? other.n_ptr : n_ptr;
+  for(;tymczasowy !=nullptr;tymczasowy=tymczasowy->next)
+  {
+    dodatkowa++;
+  }
   return dodatkowa;
 }
 
@@ -226,9 +212,6 @@ typename List<T>::Iterator List<T>::Iterator::operator[](std::size_t i)
 template <typename T>
 T& List<T>::Iterator::operator*()
 {
-    /*static T element;
-    element=n_ptr->value;
-    return element;*/
     return n_ptr->value;
 }
 
@@ -283,35 +266,38 @@ bool List<T>::ConstIterator::operator!=(const ConstIterator& other) const
 template <typename T>
 bool List<T>::ConstIterator::operator>(const ConstIterator& other) const
 {
-  if(n_ptr > other.n_ptr)
+  for(auto tymczasowy = n_ptr;tymczasowy!=nullptr; tymczasowy=tymczasowy->next)
   {
-    return true;
-  }
-  else
-  {
-    return false;
+    if(tymczasowy==other.n_ptr)
+    {
+      return false;
+    }
   }
 }
 
 template <typename T>
 bool List<T>::ConstIterator::operator<(const ConstIterator& other) const
 {
-  if(n_ptr < other.n_ptr)
+  for(auto tymczasowy = n_ptr;tymczasowy!=nullptr; tymczasowy=tymczasowy->next)
   {
-    return true;
+    if(tymczasowy==other.n_ptr)
+    {
+      return true;
+    }
   }
-  else
-  {
-    return false;
-  }
-  return true;
 }
 
 template <typename T>
 typename List<T>::ConstIterator::difference_type List<T>::ConstIterator::operator-(const ConstIterator& other) const
 {
-  // TODO: implement
-  return 0;
+  int dodatkowa=0;
+  auto tymczasowy = (*this>other) ? other.n_ptr : n_ptr;
+
+  for(;tymczasowy !=nullptr;tymczasowy=tymczasowy->next)
+  {
+    dodatkowa++;
+  }
+  return dodatkowa;
 }
 
 template <typename T>
@@ -337,7 +323,6 @@ typename List<T>::ConstIterator List<T>::ConstIterator::operator-(difference_typ
     --Iter;
   }
   return Iter;
-  //return ConstIterator();
 }
 
 template <typename T>

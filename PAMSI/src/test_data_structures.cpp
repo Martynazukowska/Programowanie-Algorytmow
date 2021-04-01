@@ -16,7 +16,7 @@ int hash(const std::string& key)
   int result = 0;
   for(auto i=0;i<key.length();i++)
   {
-    result *= static_cast<int>(key[i]);
+    result += (i+1)*static_cast<int>(key[i]);
   }
   return result %100;
 }

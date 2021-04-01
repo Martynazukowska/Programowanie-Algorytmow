@@ -39,7 +39,6 @@ void Map<KeyType, ValueType>::insert(const KeyType& key, const ValueType& value)
   auto index = hash(key);
 
   tab[index]=value;
-  std::cout<<value<<tab[hash(key)]<<" k\n";
 
 }
 
@@ -49,10 +48,7 @@ void Map<KeyType, ValueType>::insert(const KeyType& key, const ValueType& value)
 template <typename KeyType, typename ValueType>
 ValueType &Map<KeyType, ValueType>::operator[](const KeyType &key) {
 
-  static ValueType value;
-  value=tab[hash(key)];
-
-  return value;
+  return tab[hash(key)];
 
 }
 //template <typename KeyType, typename ValueType, typename Hashfunction>

@@ -142,38 +142,38 @@ bool List<T>::Iterator::operator!=(const Iterator& other) const
 template <typename T>
 bool List<T>::Iterator::operator>(const Iterator& other) const
 { 
-  Iterator Iter(n_ptr);
-  for( int i=0 ;Iter.n_ptr!=nullptr; i++)
-    {
-      if(Iter==other)
-      {
-       return false;
-      }
-      ++Iter;
-    }                                                           
+  //Iterator Iter(n_ptr);
+  // for( int i=0 ;Iter.n_ptr!=nullptr; i++)
+  //   {
+  //     if(Iter==other)
+  //     {
+  //      return false;
+  //     }
+  //     ++Iter;
+  //   }                                                           
     return true;                                              
     /* for( std::shared_ptr<Node> tymczasowy = n_ptr;tymczasowy->next!=nullptr; tymczasowy=tymczasowy->next)
     {
       if(tymczasowy==other.n_ptr)
       {
-       return false;
+       return false;                                          
       }
-    }
+    }                                                        
     return true;*/
 }
 
 template <typename T>
 bool List<T>::Iterator::operator<(const Iterator& other) const
 {
-  Iterator Iter(n_ptr);
-  for( int i=0 ;Iter.n_ptr!=nullptr; i++)
-    {
-      if(Iter==other)
-      {
-       return false;
-      }
-      --Iter;
-    }
+  // Iterator Iter(n_ptr);
+  // for( int i=0 ;Iter.n_ptr!=nullptr; i++)
+  //   {
+  //     if(Iter==other)
+  //     {
+  //      return false;
+  //     }
+  //     --Iter;
+  //   }
     return true;
   /*for( std::shared_ptr<Node> tymczasowy = n_ptr; tymczasowy->before!=nullptr; tymczasowy=tymczasowy->before)
   {
@@ -200,26 +200,30 @@ typename List<T>::Iterator::difference_type List<T>::Iterator::operator-(const I
 template <typename T>
 typename List<T>::Iterator List<T>::Iterator::operator+(difference_type diff) const
 {
-//   Iterator Iter(n_ptr);
-//   for(int i=0;i<diff;i++)
-//   {
-//     if(n_ptr!=nullptr)
-//     ++Iter;
-//   }
-//   return Iter;
+  //std::shared_ptr<Node> pomocniczy=nullptr;
+  //pomocniczy=n_ptr;
+  Iterator Iter(n_ptr);
+  for(int i=0;i<diff;i++)
+  {
+    if(n_ptr!=nullptr)
+    ++Iter;
+    //pomocniczy=pomocniczy->next;
+  }
+  //return Iter;
+  //return Iterator(pomocniczy);
   return Iterator();
 }
 
 template <typename T>
 typename List<T>::Iterator List<T>::Iterator::operator-(difference_type diff) const
 {
-  // Iterator Iter(n_ptr);
-  // for(int i=0;i<diff;i++)
-  // {
-  //   if(n_ptr!=nullptr)
-  //   --Iter;
-  // }
-  // return Iter;
+  Iterator Iter(n_ptr);
+  for(int i=0;i<diff;i++)
+  {
+    if(n_ptr!=nullptr)
+    --Iter;
+  }
+  //return Iter;
   return Iterator();
 }
 
@@ -363,8 +367,8 @@ typename List<T>::ConstIterator List<T>::ConstIterator::operator+(difference_typ
     if(n_ptr!=nullptr)
     ++Iter;
   }
-  return Iter;
-  //return Iterator();
+  //return Iter;
+  return Iterator();
 }
 
 template <typename T>
@@ -376,7 +380,8 @@ typename List<T>::ConstIterator List<T>::ConstIterator::operator-(difference_typ
     if(n_ptr!=nullptr)
     --Iter;
   }
-  return Iter;
+  //return Iter;
+  return Iterator();
 }
 
 template <typename T>

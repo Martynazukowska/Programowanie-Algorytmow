@@ -119,7 +119,7 @@ TEST_CASE("Sorting big data -- quicksort")
 
     std::sort(refTab.begin(), refTab.end());
 
-    quickSort(tab);
+    quickSort(tab, 0 ,tab.size()-1);
 
     for(int i = 0; i < tab.size(); ++i)
     {
@@ -144,7 +144,7 @@ TEST_CASE("Sorting big data -- merge sort")
 
     std::sort(refTab.begin(), refTab.end());
 
-    mergeSort(tab);
+    mergeSort(tab, 0,tab.size()-1);
 
     for(int i = 0; i < tab.size(); ++i)
     {

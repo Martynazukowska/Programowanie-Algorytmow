@@ -6,8 +6,8 @@
 void bubbleSort(std::vector<int>& tab);
 void insertSort(std::vector<int>& tab);
 void heapSort(std::vector<int>& tab);
-void quickSort(std::vector<int>& tab);
-void mergeSort(std::vector<int>& tab);
+void quickSort(std::vector<int>& tab,int pierwszy,int ostatni);
+void mergeSort(std::vector<int>& tab,int pierwszy, int ostatni);
 void bucketSort(std::vector<int>& tab);
 
 #endif /* SORTING_HPP_ */

@@ -28,7 +28,8 @@ void heapSort(std::vector<int>& tab)
 }
 
 void quickSort(std::vector<int>& tab ,int pierwszy, int ostatni)
-{  
+
+{   
     int i=pierwszy-1;
     int j= ostatni+1;
     int pomocny =tab[(pierwszy+ostatni)/2];

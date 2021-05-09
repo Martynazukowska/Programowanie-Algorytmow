@@ -82,6 +82,7 @@ TEST_CASE("Adjacency Matrix Graph -- Dijkstra")
                                                          dataDirectoryPath / "sp_result" / "spV200D0.75.txt"));
 
     std::ifstream inputStream{inputFile}, refStream{refFile};
+
     auto graph = AdjacencyMatrixGraph::createGraph(inputStream);
 
     ShortestPathResult result, refResult;

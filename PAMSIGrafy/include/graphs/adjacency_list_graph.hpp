@@ -5,13 +5,23 @@
 
 #include "graphs/graph.hpp"
 
+
 class AdjacencyListGraph : public Graph
 {
 
   public:
-    // TODO: implement all required methods
+  std::vector<int> polaczenia; // vektor przehowujacy ilosc polaczenien z odpowiednim wierzcholkiem
 
-    static std::unique_ptr<Graph> createGraph(std::istream& is);
+  std::vector<std::vector<std::vector<int>>> element;
+
+  std::vector<int> liczbaPolaczen(unsigned int intex) override;
+  bool Czy_istnieje_polaczenie(unsigned int PierwszyW, unsigned int Drugii_W)override;
+  
+  int zwroc_wage(int Pierwszy,int Drugi) override;
+
+
+  static std::unique_ptr<Graph> createGraph(std::istream& is);
 };
 
 #endif /* ADJACENCY_LIST_GRAPH_HPP_ */
+

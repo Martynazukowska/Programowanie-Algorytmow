@@ -76,7 +76,6 @@ std::unique_ptr<Graph> AdjacencyListGraph::createGraph(std::istream& is)
 }
 bool AdjacencyListGraph::Czy_istnieje_polaczenie(unsigned int PierwszyW, unsigned int Drugii_W)
 {
-    std::cout<<"startlista";
     for (int j = 0; j< polaczenia[PierwszyW]; j++)
         {
             if(element[PierwszyW][j][1]==Drugii_W)

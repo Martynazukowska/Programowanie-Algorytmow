@@ -22,7 +22,6 @@ class AdjacencyMatrixGraph : public Graph
   
   static std::unique_ptr<Graph> createGraph(std::istream& is);
 
-  // void Wygeneruj_Graf(float gestosc);
         
 };
 

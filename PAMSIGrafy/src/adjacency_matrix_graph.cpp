@@ -69,7 +69,7 @@ std::vector<int> AdjacencyMatrixGraph::liczbaPolaczen(unsigned int intex)
 
     std::vector<int> polaczenia;
 
-    for (int i = 0; i < this->wierzcholki; i++)
+    for (int i = 0; i < wierzcholki; i++)
     {
         if(elemnt[intex][i]!=0)
         {

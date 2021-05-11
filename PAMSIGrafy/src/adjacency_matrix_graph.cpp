@@ -30,16 +30,12 @@ std::unique_ptr<Graph> AdjacencyMatrixGraph::createGraph(std::istream& is)
     for(int i=0; i<pom_k; i++)
         {
             is>>w1;
-            if(i==0)
-            {
-                pom_wp=w1;
-            }
             is>>w2;
             is>>waga;
             pom_macierz[w1][w2]=waga;
         }
     
-    is>>pom_ost;
+   is>>pom_wp;
     
     macierz.wierzcholki=pom_w;
     macierz.krawedzie=pom_k;
@@ -47,7 +43,7 @@ std::unique_ptr<Graph> AdjacencyMatrixGraph::createGraph(std::istream& is)
 
 
     macierz.elemnt=pom_macierz;
-    macierz.ostatni_wierz=pom_ost;
+    // macierz.ostatni_wierz=pom_ost;
 
     return std::make_unique<AdjacencyMatrixGraph>(macierz);
 

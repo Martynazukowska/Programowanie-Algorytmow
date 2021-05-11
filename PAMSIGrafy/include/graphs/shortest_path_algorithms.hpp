@@ -1,6 +1,6 @@
 #ifndef SHORTEST_PATH_ALGORITHMS_HPP_
 #define SHORTEST_PATH_ALGORITHMS_HPP_
-#define MAX 2147483647
+#define MAX 2147483
 
 #include "graphs/graph.hpp"
 

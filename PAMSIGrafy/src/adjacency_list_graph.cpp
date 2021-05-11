@@ -13,8 +13,8 @@ std::unique_ptr<Graph> AdjacencyListGraph::createGraph(std::istream& is)
     AdjacencyListGraph lista;
     
     std::vector<int> pom_krawedz(3); // tworze wektor 3 elementowy na pierwszy wierzcholek, drugi wierzcholek i wage polaczenia 
+    
     std::vector<std::vector<int>> pom_pom_listy; //  
-
 
     unsigned int pom_pierwszy=0,pom_drugi=0,pom_waga=0;
 
@@ -36,10 +36,6 @@ std::unique_ptr<Graph> AdjacencyListGraph::createGraph(std::istream& is)
     for (int i = 0; i < pom_k; i++)
     {
         is>>pom_pierwszy;
-        if(i==0)
-            {
-                pom_wp=pom_pierwszy;
-            }
         is>>pom_drugi;
         is>>pom_waga;
         
@@ -64,13 +60,12 @@ std::unique_ptr<Graph> AdjacencyListGraph::createGraph(std::istream& is)
         }
     }
     
-    is>>pom_ost;
+    is>>pom_wp;
 
     lista.wierzcholki=pom_w;
     lista.krawedzie=pom_k;
     lista.pierwszy_wierz=pom_wp;
 
-    lista.ostatni_wierz=pom_ost;
  
     return std::make_unique<AdjacencyListGraph>(lista);
 }
@@ -111,5 +106,5 @@ int AdjacencyListGraph::zwroc_wage(int Pierwszy,int Drugi)
                 return element[Pierwszy][j][2];
             }
         }
-    return 0;
+    return 99999999;
 }

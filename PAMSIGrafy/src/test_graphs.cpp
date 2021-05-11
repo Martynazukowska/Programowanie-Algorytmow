@@ -26,7 +26,6 @@ void readShortestPathResult(std::istream& is, ShortestPathResult& result)
 
         int endVertexIndex, cost;
         iss >> endVertexIndex >> cost;
-
         if(is)
         {
             std::vector<int> vertices;

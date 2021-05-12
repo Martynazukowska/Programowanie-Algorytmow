@@ -3,6 +3,8 @@
 #define MAX 2147483
 
 #include "graphs/graph.hpp"
+#include "graphs/adjacency_list_graph.hpp"
+#include "graphs/adjacency_matrix_graph.hpp"
 
 #include <map>
 #include <utility>

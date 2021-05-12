@@ -1,14 +1,25 @@
 #include <iostream>
-#include <fstream>
+#include <sstream>
 #include <string>
+
 #include <filesystem>
+#include <fstream>
 
 #include "graphs/adjacency_list_graph.hpp"
 #include "graphs/adjacency_matrix_graph.hpp"
+#include "graphs/shortest_path_algorithms.hpp"
+
+
+#include "graphs/timer.hpp"
+#include <cstdlib>
+#include <ctime>
+#include <thread>
+
+
 
 void Wygeneruj_Graf(float gestosc)
 {
-    std::ofstream wpisz("/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSIGrafy/build/a.txt"); 
+    std::ofstream wpisz("/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSIGrafy/data/graph/a.txt"); 
 
     srand(time(NULL));
     int ilosc_wierzcholkow=ILOSC_WIERZCHOLKOW;
@@ -97,59 +108,46 @@ void Wygeneruj_Graf(float gestosc)
         }
         
     }
-    wpisz<<Pom.pierwszy_wierz<<"\n";
+    wpisz<<pierwszy_wierz<<"\n";
     
     wpisz.close();
 
 }
 
+
+using namespace std::string_literals;
+using namespace std::chrono_literals;
+
+
 int main(int argc, char* argv[])
 {
-    std::cout<< "Tu wykonujemy testy efektywności algorytmów"<<std::endl;
-
-    AdjacencyMatrixGraph Graf_Macierz;
-    AdjacencyListGraph Graf_Lista;
-
     Wygeneruj_Graf(0.25);
     
-    // std::ifstream plik;
-    // plik.open( "/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSIGrafy/build/a.txt" );
+    std::ifstream inputStream{"home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSIGrafy/data/graph/a.txt"};
     
-    // auto Graf_M=Graf_Macierz.createGraph(plik);
-    // auto Graf_L=Graf_Lista.createGraph(plik);
 
-    // plik.close();
+    // auto graph = AdjacencyMatrixGraph::createGraph(inputStream); 
+    auto graph = AdjacencyListGraph::createGraph(inputStream);
 
+    ShortestPathResult result, result2;
+    Timer timer, timer2;
 
+    int sourceIndex;
 
+    inputStream >> sourceIndex;
 
-
-
-
-
-
-    // const std::filesystem::path dataDirectoryPath{DATA_DIR_PATH};
-    
-    // auto [inputFile] =std::make_tuple(dataDirectoryPath / "build" / "a.txt");
-
-    // std::ifstream inputStream{inputFile};
-
-    // auto graph = AdjacencyMatrixGraph::createGraph(inputStream);
-    
-    // int sourceIndex;
-    // inputStream >> sourceIndex;
-
-    // bellmanFord(*graph, sourceIndex, result);
-
+    timer.start();
+    // dijkstra(*graph, sourceIndex, result);
+    timer.stop();
 
     
 
+    timer2.start();
+    // bellmanFord(*graph, sourceIndex, result2);
+    timer2.stop();
 
-    
 
-
-    
-
-    
     return 0;
 }
+
+

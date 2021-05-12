@@ -97,7 +97,7 @@ void Wygeneruj_Graf(float gestosc)
         }
         
     }
-    wpisz<<"\n";
+    wpisz<<Pom.pierwszy_wierz<<"\n";
     
     wpisz.close();
 
@@ -111,12 +111,36 @@ int main(int argc, char* argv[])
     AdjacencyListGraph Graf_Lista;
 
     Wygeneruj_Graf(0.25);
-    std::ifstream plik;
-    plik.open( "/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSIGrafy/build/a.txt" );
+    
+    // std::ifstream plik;
+    // plik.open( "/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSIGrafy/build/a.txt" );
     
     // auto Graf_M=Graf_Macierz.createGraph(plik);
     // auto Graf_L=Graf_Lista.createGraph(plik);
-    plik.close();
+
+    // plik.close();
+
+
+
+
+
+
+
+
+
+    // const std::filesystem::path dataDirectoryPath{DATA_DIR_PATH};
+    
+    // auto [inputFile] =std::make_tuple(dataDirectoryPath / "build" / "a.txt");
+
+    // std::ifstream inputStream{inputFile};
+
+    // auto graph = AdjacencyMatrixGraph::createGraph(inputStream);
+    
+    // int sourceIndex;
+    // inputStream >> sourceIndex;
+
+    // bellmanFord(*graph, sourceIndex, result);
+
 
     
 

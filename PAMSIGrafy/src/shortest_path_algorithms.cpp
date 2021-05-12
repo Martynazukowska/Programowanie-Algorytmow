@@ -22,7 +22,7 @@ void dijkstra(Graph& graph, int sourceIndex, ShortestPathResult& result)
 {
     std::vector<bool> odwiedzony(graph.wierzcholki);
 
-    for(int i=0;i<graph.wierzcholki;i++)
+    for(int i=0;i<graph.wierzcholki;i++) //poczatkowe ustawienia koszt na MAX i wszystkie wierzcholki nie nieodwiedzone
     {
         if(i==graph.pierwszy_wierz)
         {
@@ -37,10 +37,9 @@ void dijkstra(Graph& graph, int sourceIndex, ShortestPathResult& result)
         }   
     }
 
-    int pom=graph.pierwszy_wierz;
-
     int minimum=Minimum(graph.wierzcholki,result,odwiedzony);
-    std::vector<int> Poprzedni2(graph.wierzcholki);
+
+    std::vector<int> Poprzedni2(graph.wierzcholki); // wektor poprzednich wierzcholkow
 
     for (int i = 0; i < graph.wierzcholki; i++)
     {
@@ -67,11 +66,11 @@ void dijkstra(Graph& graph, int sourceIndex, ShortestPathResult& result)
             }
             minimum=Minimum(graph.wierzcholki,result,odwiedzony);
     }
+    //utawianie sciezki najszybszego dojscia
     for (int i = 0; i < graph.wierzcholki; i++)
     {
         result[i].path.push_back(i);
         int aktualny =i;
-        int j=graph.wierzcholki;
         while (aktualny!=graph.pierwszy_wierz)
         {
             result[i].path.push_back(Poprzedni2[aktualny]);
@@ -103,42 +102,25 @@ bool bellmanFord(Graph& graph, int sourceIndex, ShortestPathResult& result)
         }   
     }
 
-    std::vector<int> Poprzedni2(graph.wierzcholki);
-
-    for (int i = 0; i < graph.wierzcholki; i++)
-    {
-        Poprzedni2[i]=-1;
-    }
 
     for(int c = 1; c < graph.wierzcholki; c++)
     {
+        
         for (int i=0; i<graph.wierzcholki; i++)
         {
             std::vector<int> pom=graph.liczbaPolaczen(i);
+            
             for (int j=0; j<pom.size(); j++)
             {
-                if( result[j].cost != MAX && graph.Czy_istnieje_polaczenie(i,pom[j])  && result[i].cost > result[pom[j]].cost+graph.zwroc_wage(i,pom[j]))
+                if( result[j].cost != MAX && graph.Czy_istnieje_polaczenie(i,pom[j])  && result[pom[j]].cost > result[i].cost+graph.zwroc_wage(i,pom[j]))
                 {
-                    result[i].cost=result[pom[j]].cost+graph.zwroc_wage(i,pom[j]);
+                    // std::cout<<"aaaa\n";
+                    result[pom[j]].cost=result[i].cost+graph.zwroc_wage(i,pom[j]);
+                    // result[i].path.push_back(j);
                 }
             }
         }
     }
-
-    for (int i = 0; i < graph.wierzcholki; i++)
-    {
-        result[i].path.push_back(i);
-        int aktualny =i;
-        int j=graph.wierzcholki;
-        while (aktualny!=graph.pierwszy_wierz)
-        {
-            result[i].path.push_back(Poprzedni2[aktualny]);
-            aktualny=Poprzedni2[aktualny];
-        }
-        std::reverse(result[i].path.begin(),result[i].path.end());
-        
-    }
-    
 
     return true;
 }

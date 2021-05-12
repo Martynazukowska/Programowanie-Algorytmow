@@ -14,7 +14,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <thread>
-
+#define ILOSC_WIERZCHOLKOW 10
 
 
 void Wygeneruj_Graf(float gestosc)
@@ -121,13 +121,12 @@ using namespace std::chrono_literals;
 
 int main(int argc, char* argv[])
 {
-    Wygeneruj_Graf(0.25);
+    Wygeneruj_Graf(1);
     
-    std::ifstream inputStream{"home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSIGrafy/data/graph/a.txt"};
+    std::ifstream inputStream{"../data/graph/a.txt"};
     
-
-    // auto graph = AdjacencyMatrixGraph::createGraph(inputStream); 
-    auto graph = AdjacencyListGraph::createGraph(inputStream);
+    std::unique_ptr<Graph> graph = AdjacencyMatrixGraph::createGraph(inputStream); 
+    // std::unique_ptr<Graph> graph = AdjacencyListGraph::createGraph(inputStream);     //zamiennie tworze AdjecenListGraph lub AdjenMatrixGraph
 
     ShortestPathResult result, result2;
     Timer timer, timer2;
@@ -137,15 +136,17 @@ int main(int argc, char* argv[])
     inputStream >> sourceIndex;
 
     timer.start();
-    // dijkstra(*graph, sourceIndex, result);
+    dijkstra(*graph, sourceIndex, result);
     timer.stop();
-
-    
+    std::cout<<"\n";
+    std::cout<<"Djikstra: "<<timer.sInterval()<<"\n";   
 
     timer2.start();
-    // bellmanFord(*graph, sourceIndex, result2);
+    bellmanFord(*graph, sourceIndex, result2);
     timer2.stop();
 
+    std::cout<<"Bellman Ford: "<<timer2.sInterval()<<"\n";
+    std::cout<<"\n";
 
     return 0;
 }

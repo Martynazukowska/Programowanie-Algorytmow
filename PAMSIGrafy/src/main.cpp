@@ -14,16 +14,19 @@
 #include <cstdlib>
 #include <ctime>
 #include <thread>
-#define ILOSC_WIERZCHOLKOW 10
+#define ILOSC_WIERZCHOLKOW 150
 
 
-void Wygeneruj_Graf(float gestosc)
+void Wygeneruj_Graf(float gestosc)  //Funkcja generująca graf do pliku a.txt w zależności od podanej gęstości i zdefinowanej wartości ILOSC_WIERZCHOLKOW
 {
     std::ofstream wpisz("/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/PAMSIGrafy/data/graph/a.txt"); 
 
     srand(time(NULL));
     int ilosc_wierzcholkow=ILOSC_WIERZCHOLKOW;
     int krawedzie;
+
+    //oblicznie ilości krawędzi
+
     krawedzie=ilosc_wierzcholkow*(ilosc_wierzcholkow-1)*gestosc;
     wpisz<<ilosc_wierzcholkow<<" "<<krawedzie;
 
@@ -32,6 +35,8 @@ void Wygeneruj_Graf(float gestosc)
 
     AdjacencyMatrixGraph Pom;
     std::vector<int> pom_pom_macierzy;
+
+    //alokowanie pamięci
 
     for (int i = 0; i < ilosc_wierzcholkow; i++)
     {
@@ -44,14 +49,7 @@ void Wygeneruj_Graf(float gestosc)
            Pom.elemnt.push_back(pom_pom_macierzy);
        }
 
-    for(int i=0;i<ilosc_wierzcholkow;i++)
-    {
-        for(int j=0;j<ilosc_wierzcholkow;j++)
-        {
-            Pom.elemnt[i][j]=0;
-        }
-    }
-    if(gestosc<=0.5)
+    if(gestosc!=0)         // gdy gęstość jest procentem 
     {
         for(int i=0;i<ilosc_wierzcholkow;i++)
         {
@@ -75,7 +73,7 @@ void Wygeneruj_Graf(float gestosc)
 
         }
     }
-    else
+    else                // gdy gęstość jest równa 1
     {
         for(int i=0;i<ilosc_wierzcholkow;i++)
             for(int j=0;j<ilosc_wierzcholkow;j++)
@@ -96,6 +94,9 @@ void Wygeneruj_Graf(float gestosc)
         }
 
     }
+
+    //Zapisywanie wygenerowanego grafu na bazie macierzy do pliku 
+
     wpisz<<"\n";
     for (int i = 0; i < ilosc_wierzcholkow; i++)
     {
@@ -121,12 +122,12 @@ using namespace std::chrono_literals;
 
 int main(int argc, char* argv[])
 {
-    Wygeneruj_Graf(1);
+    Wygeneruj_Graf(1); //Generowanie grafu
     
     std::ifstream inputStream{"../data/graph/a.txt"};
     
-    std::unique_ptr<Graph> graph = AdjacencyMatrixGraph::createGraph(inputStream); 
-    // std::unique_ptr<Graph> graph = AdjacencyListGraph::createGraph(inputStream);     //zamiennie tworze AdjecenListGraph lub AdjenMatrixGraph
+    // std::unique_ptr<Graph> graph = AdjacencyMatrixGraph::createGraph(inputStream); 
+    std::unique_ptr<Graph> graph = AdjacencyListGraph::createGraph(inputStream);     //zamiennie tworzenie AdjecenListGraph lub AdjenMatrixGraph
 
     ShortestPathResult result, result2;
     Timer timer, timer2;

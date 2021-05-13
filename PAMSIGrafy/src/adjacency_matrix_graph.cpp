@@ -5,14 +5,16 @@ std::unique_ptr<Graph> AdjacencyMatrixGraph::createGraph(std::istream& is)
 {
     unsigned int pom_w,pom_k,pom_wp,pom_ost;
 
-    is>>pom_w;
-    is>>pom_k;
+    is>>pom_w;      //pobieranie ilośći wierzchołków
+    is>>pom_k;      //pobieranie ilości krawędzi
     
     AdjacencyMatrixGraph  macierz; 
 
     
-    std::vector<std::vector<int>> pom_macierz; 
+    std::vector<std::vector<int>> pom_macierz;  
     std::vector<int> pom_pom_macierzy;
+
+    //alokowanie pamięci
 
     for (int i = 0; i < pom_w; i++)
     {
@@ -27,6 +29,8 @@ std::unique_ptr<Graph> AdjacencyMatrixGraph::createGraph(std::istream& is)
     
     unsigned int w1,w2,waga;
 
+    //przypisywanie odpowiednich wartości do macierzy 
+
     for(int i=0; i<pom_k; i++)
         {
             is>>w1;
@@ -35,7 +39,7 @@ std::unique_ptr<Graph> AdjacencyMatrixGraph::createGraph(std::istream& is)
             pom_macierz[w1][w2]=waga;
         }
     
-   is>>pom_wp;
+   is>>pom_wp;  //pobieranie pierwszego wierzchołka
     
     macierz.wierzcholki=pom_w;
     macierz.krawedzie=pom_k;
@@ -43,12 +47,11 @@ std::unique_ptr<Graph> AdjacencyMatrixGraph::createGraph(std::istream& is)
 
 
     macierz.elemnt=pom_macierz;
-    // macierz.ostatni_wierz=pom_ost;
 
     return std::make_unique<AdjacencyMatrixGraph>(macierz);
 
 }
-bool AdjacencyMatrixGraph::Czy_istnieje_polaczenie(unsigned int PierwszyW, unsigned int Drugii_W)
+bool AdjacencyMatrixGraph::Czy_istnieje_polaczenie(unsigned int PierwszyW, unsigned int Drugii_W) //Funkcja do sprawdzenia czy istnieje połączenie między wierzchołkami
 {
     if(elemnt[PierwszyW][Drugii_W]!=0)
     {
@@ -60,14 +63,14 @@ bool AdjacencyMatrixGraph::Czy_istnieje_polaczenie(unsigned int PierwszyW, unsig
         return false;
     }
 }
-std::vector<int> AdjacencyMatrixGraph::liczbaPolaczen(unsigned int intex)
+std::vector<int> AdjacencyMatrixGraph::liczbaPolaczen(unsigned int J) //Funkcja zwracająca vektor zawierający wszystkie wierzcholki z którym jest połaczony wierzcholek J
 {
 
     std::vector<int> polaczenia;
 
     for (int i = 0; i < wierzcholki; i++)
     {
-        if(elemnt[intex][i]!=0)
+        if(elemnt[J][i]!=0)
         {
             polaczenia.push_back(i);
 
@@ -77,7 +80,7 @@ std::vector<int> AdjacencyMatrixGraph::liczbaPolaczen(unsigned int intex)
 
 }
 
-int AdjacencyMatrixGraph::zwroc_wage(int Pierwszy,int Drugi)
+int AdjacencyMatrixGraph::zwroc_wage(int Pierwszy,int Drugi) //Funckcja zwracająca wage połączenia wierzchołka Pierwszy i Drugi
 {
     return elemnt[Pierwszy][Drugi];
 }

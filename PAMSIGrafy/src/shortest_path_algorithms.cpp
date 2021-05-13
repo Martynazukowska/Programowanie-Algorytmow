@@ -1,7 +1,7 @@
 #include "graphs/shortest_path_algorithms.hpp"
 #include <algorithm>
 
-int Minimum(int wierzcholek,ShortestPathResult& result,std::vector<bool> odwiedzony)
+int Minimum(int wierzcholek,ShortestPathResult& result,std::vector<bool> odwiedzony) //Funkcja Minimum potrzebna do dijkstry zwracająca najoptymalniejszy wierzcholek
 {
     int min=-MAX;
     int wartosc=MAX;
@@ -66,6 +66,7 @@ void dijkstra(Graph& graph, int sourceIndex, ShortestPathResult& result)
             }
             minimum=Minimum(graph.wierzcholki,result,odwiedzony);
     }
+
     //utawianie sciezki najszybszego dojscia
     for (int i = 0; i < graph.wierzcholki; i++)
     {
@@ -76,7 +77,7 @@ void dijkstra(Graph& graph, int sourceIndex, ShortestPathResult& result)
             result[i].path.push_back(Poprzedni2[aktualny]);
             aktualny=Poprzedni2[aktualny];
         }
-        std::reverse(result[i].path.begin(),result[i].path.end());
+        std::reverse(result[i].path.begin(),result[i].path.end()); //odwracanie wektora
         
     }
     
@@ -84,21 +85,19 @@ void dijkstra(Graph& graph, int sourceIndex, ShortestPathResult& result)
 
 bool bellmanFord(Graph& graph, int sourceIndex, ShortestPathResult& result)
 {
-    std::vector<bool> odwiedzony(graph.wierzcholki);
     int poprzedni;
+
+    //ustawienie wszystkich kosztów na MAX i kosztu pierwszego wierzchołka na 0 
 
     for(int i=0;i<graph.wierzcholki;i++)
     {
         if(i==graph.pierwszy_wierz)
         {
             result[graph.pierwszy_wierz].cost=0;
-
-            odwiedzony[i]=false;
         }
         else
         {
             result[i].cost=MAX;
-            odwiedzony[i]=false;
         }   
     }
 
@@ -113,7 +112,7 @@ bool bellmanFord(Graph& graph, int sourceIndex, ShortestPathResult& result)
     {
         for (int i=0; i<graph.wierzcholki; i++)
         {
-            std::vector<int> pom=graph.liczbaPolaczen(i);
+            std::vector<int> pom=graph.liczbaPolaczen(i); //wektor z polaczonymi wierzcholami z wierzcholkiem i 
             
             for (int j=0; j<pom.size(); j++)
             {
@@ -126,6 +125,8 @@ bool bellmanFord(Graph& graph, int sourceIndex, ShortestPathResult& result)
         }
     }
 
+     //utawianie sciezki najszybszego dojscia
+
     for (int i = 0; i < graph.wierzcholki; i++)
     {
         result[i].path.push_back(i);
@@ -135,7 +136,7 @@ bool bellmanFord(Graph& graph, int sourceIndex, ShortestPathResult& result)
             result[i].path.push_back(Poprzedni2[aktualny]);
             aktualny=Poprzedni2[aktualny];
         }
-        std::reverse(result[i].path.begin(),result[i].path.end());
+        std::reverse(result[i].path.begin(),result[i].path.end()); //odwracanie wektora 
         
     }
 

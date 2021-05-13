@@ -10,9 +10,9 @@ class AdjacencyListGraph : public Graph
 {
 
   public:
-  std::vector<int> polaczenia; // vektor przehowujacy ilosc polaczenien z odpowiednim wierzcholkiem
+  std::vector<int> polaczenia; // vektor przechowujacy ilość połączeń każdego wierzchołka
 
-  std::vector<std::vector<std::vector<int>>> element;
+  std::vector<std::vector<std::vector<int>>> element; 
 
   std::vector<int> liczbaPolaczen(unsigned int intex) override;
   bool Czy_istnieje_polaczenie(unsigned int PierwszyW, unsigned int Drugii_W)override;

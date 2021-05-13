@@ -52,7 +52,7 @@ TEST_CASE("List/pushFront")
     list.pushFront(1);
     list.pushFront(2);
 
-    REQUIRE(list[0] == 2);
+    REQUIRE(list[0] == 3);
     REQUIRE(list[1] == 1);
 }
 

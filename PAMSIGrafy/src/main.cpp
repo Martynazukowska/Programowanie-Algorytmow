@@ -14,7 +14,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <thread>
-#define ILOSC_WIERZCHOLKOW 150
+#define ILOSC_WIERZCHOLKOW 5
 
 
 void Wygeneruj_Graf(float gestosc)  //Funkcja generująca graf do pliku a.txt w zależności od podanej gęstości i zdefinowanej wartości ILOSC_WIERZCHOLKOW
@@ -49,7 +49,7 @@ void Wygeneruj_Graf(float gestosc)  //Funkcja generująca graf do pliku a.txt w 
            Pom.elemnt.push_back(pom_pom_macierzy);
        }
 
-    if(gestosc!=0)         // gdy gęstość jest procentem 
+    if(gestosc!=1)         // gdy gęstość jest procentem 
     {
         for(int i=0;i<ilosc_wierzcholkow;i++)
         {
@@ -122,13 +122,14 @@ using namespace std::chrono_literals;
 
 int main(int argc, char* argv[])
 {
-    Wygeneruj_Graf(1); //Generowanie grafu
+    Wygeneruj_Graf(0); //Generowanie grafu
     
     std::ifstream inputStream{"../data/graph/a.txt"};
     
     // std::unique_ptr<Graph> graph = AdjacencyMatrixGraph::createGraph(inputStream); 
     std::unique_ptr<Graph> graph = AdjacencyListGraph::createGraph(inputStream);     //zamiennie tworzenie AdjecenListGraph lub AdjenMatrixGraph
-
+     
+    
     ShortestPathResult result, result2;
     Timer timer, timer2;
 

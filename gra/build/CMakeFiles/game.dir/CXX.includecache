@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+../include/game/Pion.hpp
+pionek.hpp
+../include/game/pionek.hpp
+
 ../include/game/Stan.hpp
 element.hpp
 ../include/game/element.hpp
@@ -81,10 +85,10 @@ string
 -
 
 ../include/game/plansza.hpp
-pionek.hpp
-../include/game/pionek.hpp
 zasady.hpp
 ../include/game/zasady.hpp
+pionek.hpp
+../include/game/pionek.hpp
 dane.hpp
 ../include/game/dane.hpp
 dane2.hpp
@@ -103,16 +107,34 @@ game/zasady.hpp
 /home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/gra/src/game/zasady.hpp
 cstdio
 -
-SDL2/SDL_image.h
--
-SDL2/SDL.h
--
 game/pionek.hpp
 /home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/gra/src/game/pionek.hpp
 game/plansza.hpp
 /home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/gra/src/game/plansza.hpp
 game/dane2.hpp
 /home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/gra/src/game/dane2.hpp
+
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/gra/src/button.cpp
+game/button.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/gra/src/game/button.hpp
+
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/gra/src/grafika.cpp
+game/grafika.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/gra/src/game/grafika.hpp
+game/pionek.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/gra/src/game/pionek.hpp
+cstdio
+-
+game/Stan.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/gra/src/game/Stan.hpp
+game/Pion.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/gra/src/game/Pion.hpp
+SDL2/SDL_image.h
+-
+SDL2/SDL.h
+-
+iostream
+-
 
 /home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/gra/src/main.cpp
 game/button.hpp
@@ -130,6 +152,8 @@ SDL2/SDL.h
 cstdio
 -
 string
+-
+iostream
 -
 
 /home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/gra/src/plansza.cpp

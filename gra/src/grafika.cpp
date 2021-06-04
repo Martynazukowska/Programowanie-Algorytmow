@@ -13,7 +13,7 @@ SDL_Rect gSpriteClips[(int) Przyciski::BUTTON_TOTAL ];
 Element gCheckTexture;
 Element gButtonSpriteSheetTexture;
 //Buttons objects
-Button gButtons[ Button::WSZYSTKIE_GUZIKI ];
+Button gButtons[ Button::WSZYSTKIE ];
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
 //The window renderer
@@ -25,12 +25,19 @@ Element Biale[7];
 Element Czarne[7];
 Element wybrany;
 Element wybor;
+Element pieceSelected;
+Element bestMove;
+Element endGame[3];
 
 bool Graphics::loadMedia() {
     bool success = true;
 
     if( !wybor.loadFromFile( "../data/Selection.png" ) ) {
         std::cout<<"Failed to load texture!\n";
+        success = false;
+    }
+    if( !gBoard.loadFromFile( "../data/Chess_Stone.png" ) ) {
+        std::cout<< "Failed to load texture!\n";
         success = false;
     }
 
@@ -125,7 +132,8 @@ bool Graphics::init(){
         SDL_GetError();
         success = false;
     }
-    else {
+    else 
+    {
         //Set a hint with normal priority.
         if( !SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ) )
         {
@@ -139,7 +147,8 @@ bool Graphics::init(){
             SDL_GetError();
             success = false;
         }
-        else{
+        else
+        {
             //render
             gRenderer = SDL_CreateRenderer( gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
             if( gRenderer == NULL )

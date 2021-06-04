@@ -11,20 +11,6 @@
 
 #include <string> 
 
-// SDL_Rect gSpriteClips[(int) Przyciski::BUTTON_TOTAL ];
-//  Element gCheckTexture;
-//  Element gButtonSpriteSheetTexture;
-//  Button gButtons[ Button::WSZYSTKIE_GUZIKI ];
-//  SDL_Window* gWindow;
-//  SDL_Renderer* gRenderer;
-
-//  Element gBoard;
-//  Element Biale[7];
-//  Element Czarne[7];
-//  Element wybrany;
-//  Element wbor;
-
-
 class Graphics{
     public: 
 

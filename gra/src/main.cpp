@@ -30,12 +30,16 @@
 
 #include <cstdio>
 #include <string>
+#include <iostream>
 
 
 using namespace std;
 
 int main( int argc, char* args[] ){
 
+	std::cout<<"chociaz tu ";
+
+	
     Graphics graphics;
 	StanGry *gm = new StanGry(); 
 
@@ -49,8 +53,9 @@ int main( int argc, char* args[] ){
         {
 			cout<<"Nie udalo sie zaladowac madiow\n";
 		}
-		else{
-           // gm->startStateMachine(GameMode::GAME_MODE_MAIN_MENU);            
+		else
+		{
+            gm->start(TrybGry::GAME_MAIN_MENU);            
     	}
         graphics.close();
 

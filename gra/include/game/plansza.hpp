@@ -1,8 +1,9 @@
 #ifndef PLANSZA_HPP
 #define PLANSZA_HPP
 
-#include "pionek.hpp"
+
 #include "zasady.hpp"
+#include "pionek.hpp"
 #include "dane.hpp"
 #include "dane2.hpp"
 

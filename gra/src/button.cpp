@@ -53,10 +53,6 @@ void Button::Przenies( SDL_Event* e , StanGry *gm)
     
             switch( e->type )
             { 
-                case SDL_MOUSEMOTION:
-                //CurrentPrzycisk = BUTTON_CONTINUE;
-                break;
-
                 case SDL_MOUSEBUTTONDOWN:
                     switch(CurrentPrzycisk){
                         case Przyciski::BUTTON_SZI:
@@ -65,26 +61,11 @@ void Button::Przenies( SDL_Event* e , StanGry *gm)
                         case Przyciski::BUTTON_QUIT:
                              gm->ustwa_stanGry(TrybGry::GAME_QUIT);
                             break;
-                        // case ButtonSprite::BUTTON_SPRITE_CONTINUE:
-                        //      gm->pause = 0;
-                        //      //gm->setGameState(GAME_MODE_CONTINUE);
-                        //     break;
-                //         case ButtonSprite::BUTTON_SPRITE_SAVE:
-                //              gm->pause = 0;
-                //              gm->ustwa_stanGry(GameMode::GAME_MODE_SAVE);
-                //  //           *gm = GAME_MODE_SAVE;
-                //             break;
-                //         case ButtonSprite::BUTTON_SPRITE_LOAD:
-                //              gm->pause = 0;
-                //              gm->ustwa_stanGry(GameMode::GAME_MODE_LOAD);
-                //   //          *gm = GAME_MODE_LOAD;
-                //             break;
                         case Przyciski::BUTTON_MAIN_MENU:
                              gm->pause = 0;
                              gm->ustwa_stanGry(TrybGry::GAME_MAIN_MENU);
                             break;
                     }
-                //mCurrentSprite = BUTTON_SPRITE_SAVE;
                 break;
             }
         }
@@ -94,7 +75,7 @@ void Button::Przenies( SDL_Event* e , StanGry *gm)
 void Button::render()
 {
     gButtonSpriteSheetTexture.render(Pozycja.x, Pozycja.y, &(gSpriteClips[ (int) CurrentPrzycisk ]) );
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   
     if(sprawdz == 1)
     {
         Czarne[(int)NAZWAP::Krol].render(Pozycja.x + SZEROKOSC_GUZIKA/2 - 40 ,Pozycja.y);

@@ -6,6 +6,7 @@
 #include <SDL2/SDL.h>
 #include "dane.hpp"
 
+
 enum class TrybGry {
     GAME_SZI = 0,
     GAME_QUIT = 1,

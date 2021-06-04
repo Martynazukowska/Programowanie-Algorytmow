@@ -7,12 +7,12 @@
 #include "game/krolowa.hpp"
 #include "game/Kon.hpp"
 
-#include "game/Stan.hpp"
-#include "game/zasady.hpp"
 
+#include "game/zasady.hpp"
+#include "game/Stan.hpp"
 
 #include <algorithm>
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -300,8 +300,6 @@ void Zasady::zbij(int x, int y)
     pom = Czarne_pionki;
   }
 }
-
-
 
 
 

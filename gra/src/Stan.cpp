@@ -3,8 +3,7 @@
 
 #include <cstdio>
 
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL.h>
+
 
 #include "game/pionek.hpp"
 #include "game/plansza.hpp"
@@ -27,7 +26,7 @@ void StanGry::renderMainMenu(){
 
     bool quit = false;
 
-    for (int i = 0 ; i < Button::WSZYSTKIE_GUZIKI/2 ; i++)
+    for (int i = 0 ; i < Button::WSZYSTKIE/2 ; i++)
     {
         gButtons[i].setCurrentPrzycisk((Przyciski) i);
     }
@@ -43,7 +42,7 @@ void StanGry::renderMainMenu(){
                 {
                     gameState = TrybGry::GAME_QUIT;
                 }
-                for( int i = 0; i < Button::WSZYSTKIE_GUZIKI/2; ++i ) {
+                for( int i = 0; i < Button::WSZYSTKIE/2; ++i ) {
                     gButtons[ i ].Przenies( &event, this);
                 }
             }
@@ -53,7 +52,7 @@ void StanGry::renderMainMenu(){
             SDL_RenderClear( gRenderer );
 
     
-            for( int i = 0; i < Button::WSZYSTKIE_GUZIKI/2; ++i )
+            for( int i = 0; i < Button::WSZYSTKIE/2; ++i )
             {
                 gButtons[ i ].render();
             }
@@ -66,6 +65,7 @@ void StanGry::renderMainMenu(){
 void StanGry::renderSZI(){
 
     bool quit = false;
+    
     int x = -1, y = -1;
 
     bool czy_jestem_bialy = true; //bialy

@@ -11,6 +11,6 @@
 
 extern SDL_Rect gSpriteClips[(int) Przyciski::BUTTON_TOTAL ];
 //Buttons objects
-extern Button gButtons[ Button::WSZYSTKIE_GUZIKI ];
+extern Button gButtons[ Button::WSZYSTKIE ];
 
 #endif 

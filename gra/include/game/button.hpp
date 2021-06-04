@@ -11,10 +11,12 @@
 #include <string>
 enum class Przyciski
 {
-    BUTTON_SZI= 0,
-    BUTTON_QUIT = 1,
-    BUTTON_MAIN_MENU = 2,
-    BUTTON_TOTAL = 3
+    BUTTON_SZI = 0,
+    BUTTON_QUIT = 3,
+    //PLANSZA PODZIELONA NA 4 na miejscu 0 i 3 przyciski 
+    //dodatkowe dane 
+    BUTTON_MAIN_MENU = 7,
+    BUTTON_TOTAL = 8
 }; 
 
 class Button
@@ -24,9 +26,10 @@ class Button
         int sprawdz = 0;
 
     public:
+    //statuc potrzebne do SDL
         static const int SZEROKOSC_GUZIKA = 340;
         static const int WYSOKOSC_GUZIKA = 340;
-        static const int WSZYSTKIE_GUZIKI = 3;
+        static const int WSZYSTKIE= 8;
                                                                                                                        
         Button();
 

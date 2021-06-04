@@ -95,7 +95,7 @@ bool Graphics::loadMedia() {
     
         //Do wygladu menu
     if( !gButtonSpriteSheetTexture.loadFromFile( "../data/menus.png") ) {
-         std::cout<<"Failed to load button sprite texture!\n";
+         std::cout<<"Failed to load button  texture!\n";
         success = false;
     }
     else

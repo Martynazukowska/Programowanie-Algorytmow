@@ -549,13 +549,14 @@ void Zasady::PlayBestMove(bool kolor)
 void Zasady::UpdateBestMoves()
 {
   int maxValue = -50;
+
   klasa KLASA;
   Waga_pionka  * pom_waga;
   Pionek ** pom;
-
+////////////////////////////////////////////////////////////////
   for(int i = 0; i < 16; i++)
   {
-    waga_bialych[i].maxy = -1;
+    waga_bialych[i].maxx = -1;
     waga_bialych[i].maxy = -1;
     waga_bialych[i].Waga = -20;
     waga_czarnych[i].maxx = -1;

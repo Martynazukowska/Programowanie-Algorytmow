@@ -54,7 +54,10 @@ void StanGry::renderMainMenu(){
     
             for( int i = 0; i < Button::WSZYSTKIE/2; ++i )
             {
-                gButtons[ i ].render();
+                if(i==0 || i==3)
+                {
+                    gButtons[ i ].render();
+                }
             }
 
             SDL_RenderPresent( gRenderer );

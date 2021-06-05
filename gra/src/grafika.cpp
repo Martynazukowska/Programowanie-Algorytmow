@@ -160,7 +160,7 @@ bool Graphics::init(){
             else
             {
                 //kolor
-                SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+                SDL_SetRenderDrawColor( gRenderer, 255, 255, 255, 255 );
 
                 // png
                 int imgFlags = IMG_INIT_PNG;

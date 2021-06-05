@@ -48,7 +48,7 @@ void StanGry::renderMainMenu(){
             }
 
             //oczysc
-            SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+            SDL_SetRenderDrawColor( gRenderer, 255, 255, 255, 255 );
             SDL_RenderClear( gRenderer );
 
     
@@ -123,7 +123,7 @@ void StanGry::renderSZI(){
         }
 
     
-       SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+       SDL_SetRenderDrawColor( gRenderer, 255, 255, 255, 255 );
        SDL_RenderClear( gRenderer );
 
        //plansza

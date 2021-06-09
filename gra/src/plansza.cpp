@@ -10,8 +10,9 @@ void Plansza::Aktualizuj(int x, int y){
         klikniecie.x = -1;
         klikniecie.y = -1;
         return;
-    } else{
-
+    }
+     else
+    {
         klikniecie.x = (int) (x-20)/80;
         klikniecie.y = (int) (y-20)/80;
     }
@@ -61,10 +62,12 @@ void Plansza::wszystko_hop(Zasady* zasady){
 bool Plansza::czy_moge_to_przesunac(Zasady* zasady)
 {
     bool przesuniecie = false;
-    if(teraz_ja != NULL){
+    if(teraz_ja != NULL)
+    {
         if(teraz_ja->GetName() != NAZWAP::nic)
         {
             przesuniecie = zasady->czy_moge_przesunac(teraz_ja,klikniecie.x,klikniecie.y);
+            
         }
     }
     return przesuniecie;
@@ -203,6 +206,7 @@ void Plansza::zmiana_na_planszy(StanGry *gm, Zasady* zasady)
                 {
                     case SDL_MOUSEBUTTONDOWN:
                         SDL_GetMouseState(&x,&y);
+
 
                         Aktualizuj(x,y);
                         

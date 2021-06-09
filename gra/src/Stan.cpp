@@ -80,8 +80,8 @@ void StanGry::renderSZI(){
     Plansza *plansza = new Plansza();
     Wynik wynik = Wynik::Brak;
 
-
     czy_jestem_bialy = plansza->kogo_kolej_teraz(this,zasady); 
+
     zasady->SetKolejke_pionka(czy_jestem_bialy);
 
 
@@ -103,8 +103,11 @@ void StanGry::renderSZI(){
                             x = -1;
                             y = -1;
                             SDL_GetMouseState(&x,&y); 
+                            std::cout<<x<<" "<<y;
                             plansza->Aktualizuj((int)x,(int)y); 
-
+                           
+                           std::cout<<plansza->czy_moge_to_przesunac(zasady);
+                           
                             if(plansza->czy_moge_to_przesunac(zasady))
                             {
                                 plansza->teraz_ja = NULL;

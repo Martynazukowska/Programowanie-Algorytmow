@@ -1,25 +1,3 @@
-// #include "game/gui.hpp"
-// #include <cstdlib>
-// #include <iostream>
-
-// // sudo apt install ...
-// // yay -S sdl2 sdl2_ttf
-
-// int main(int argc, char* argv[])
-// {
-//     Gui gui;  //tworzymy obietkt GUI
-
-//     if(!gui.init())                                 //gdy inicjalizacja się nie powiedzie
-//     {
-//         std::cerr << "Game initialization failed\n";
-//         return EXIT_FAILURE;
-//     }
-
-//     gui.execGame();                                 //odpal gre
-
-//     return EXIT_SUCCESS;
-// }
-
 #include "game/button.hpp"
 #include "game/element.hpp"
 #include "game/plansza.hpp"
@@ -36,10 +14,6 @@
 using namespace std;
 
 int main( int argc, char* args[] ){
-
-	std::cout<<"chociaz tu ";
-
-	
     Graphics graphics;
 	StanGry *gm = new StanGry(); 
 

@@ -596,17 +596,6 @@ void Zasady::UpdateBestMoves()
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 Waga_pionka Zasady::GetPionka_BestMove(Pionek * jakis)
 {
   Pionek ** pom;
@@ -677,6 +666,7 @@ void Zasady::zamiana_pionka(Pionek * jakis)
 void Zasady::SetKolejke_pionka(bool czyja_kolej)
 {
   this->czy_kolej_bialych = czyja_kolej;
+  
 }
 
 

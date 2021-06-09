@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/inc/plansza.hpp
+iostream
+-
+vector
+-
+sdl.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/inc/sdl.hpp
+zmienne_globalne.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/inc/zmienne_globalne.hpp
+
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/inc/sdl.hpp
+SDL2/SDL.h
+-
+zmienne_globalne.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/inc/zmienne_globalne.hpp
+
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/inc/zmienne_globalne.hpp
+cmath
+-
+
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/src/main.cpp
+SDL2/SDL.h
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/src/SDL2/SDL.h
+iostream
+-
+time.h
+-
+stdlib.h
+-
+string
+-
+../inc/plansza.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/inc/plansza.hpp
+
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/src/plansza.cpp
+../inc/plansza.hpp
+/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/inc/plansza.hpp
+

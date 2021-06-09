@@ -5,7 +5,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/src/main.cpp" "/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/build/CMakeFiles/game.dir/src/main.cpp.o"
-  "/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/src/plansza.cpp" "/home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/build/CMakeFiles/game.dir/src/plansza.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

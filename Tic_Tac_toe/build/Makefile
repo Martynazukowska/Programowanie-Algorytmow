@@ -150,33 +150,6 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/plansza.o: src/plansza.cpp.o
-
-.PHONY : src/plansza.o
-
-# target to build an object file
-src/plansza.cpp.o:
-	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/plansza.cpp.o
-.PHONY : src/plansza.cpp.o
-
-src/plansza.i: src/plansza.cpp.i
-
-.PHONY : src/plansza.i
-
-# target to preprocess a source file
-src/plansza.cpp.i:
-	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/plansza.cpp.i
-.PHONY : src/plansza.cpp.i
-
-src/plansza.s: src/plansza.cpp.s
-
-.PHONY : src/plansza.s
-
-# target to generate assembly for a file
-src/plansza.cpp.s:
-	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/plansza.cpp.s
-.PHONY : src/plansza.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -189,9 +162,6 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/plansza.o"
-	@echo "... src/plansza.i"
-	@echo "... src/plansza.s"
 .PHONY : help
 
 

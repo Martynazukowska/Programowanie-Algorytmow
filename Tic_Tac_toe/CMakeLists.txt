@@ -8,7 +8,6 @@ find_package(SDL2 REQUIRED)
 
 add_executable(game
   src/main.cpp
-  src/plansza.cpp
   )
 target_link_libraries(game PRIVATE SDL2::Main)
 target_include_directories(game PRIVATE include )

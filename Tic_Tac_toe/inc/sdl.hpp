@@ -1,10 +1,13 @@
 #ifndef SDL_HHP
 #define SDL_HHP
-#include <SDL2/SDL.h>     
+#include <SDL2/SDL.h>    
+ 
+#include <SDL_ttf.h>
 #include "zmienne_globalne.hpp"
 
 SDL_Renderer* renderer;
 SDL_Window* window;
+
 
 bool fullscreen, running;
 bool tak_nie = true; 

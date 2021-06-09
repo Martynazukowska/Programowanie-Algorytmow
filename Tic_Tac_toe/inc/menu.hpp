@@ -4,17 +4,19 @@
 #include "zmienne_globalne.hpp"
 #include "sdl.hpp"
 #include<iostream>
+#include <stdio.h>
+
 class menu
 {
 private:
     int cos;
 public:
-    void rysuj();
+    void rysuj(int rozmiar);
     int sprawdz_rozmiar();
-    int sprawdz_ilosc_w_rzedzie();
+    int sprawdz_ile();
 };
 
-void menu::rysuj()
+void menu::rysuj(int rozmiar)
 {
 
     int szerokosc_komorki  = WIDTH/6;
@@ -24,7 +26,9 @@ void menu::rysuj()
     rect.h = HEIGHT/6;       
     rect.w = WIDTH/6;    
     rect.x = 0;             
-    rect.y = HEIGHT/3;         
+    rect.y = HEIGHT/3;   
+
+
     
     SDL_SetRenderDrawColor(renderer,255, 255, 0, 255);
     SDL_RenderFillRectF(renderer, &rect); 
@@ -73,7 +77,45 @@ void menu::rysuj()
 
     rect.x = 5*szerokosc_komorki;   
     SDL_SetRenderDrawColor(renderer,255, 0, 0, 255);                      
-    SDL_RenderFillRectF(renderer, &rect); 
+    SDL_RenderFillRectF(renderer, &rect);
+
+    rect.x = 0;             
+    rect.y = HEIGHT/3; 
+    switch (rozmiar)
+    {
+    case 3:
+        SDL_SetRenderDrawColor(renderer,255, 255, 255, 255); 
+        SDL_RenderFillRectF(renderer, &rect); 
+        break;
+    case 4:
+        rect.x = szerokosc_komorki;   
+        SDL_SetRenderDrawColor(renderer,255, 255, 255, 255);                     
+        SDL_RenderFillRectF(renderer, &rect);
+        break;
+    case 5:
+        rect.x = 2*szerokosc_komorki;  
+        SDL_SetRenderDrawColor(renderer,255, 255, 255, 255); 
+        SDL_RenderFillRectF(renderer, &rect); 
+        break;
+    case 6:
+        rect.x = 3*szerokosc_komorki;  
+        SDL_SetRenderDrawColor(renderer,255, 255, 255, 255); 
+        SDL_RenderFillRectF(renderer, &rect); 
+        break;
+    case 7:
+        rect.x = 4*szerokosc_komorki;  
+        SDL_SetRenderDrawColor(renderer,255, 255, 255, 255); 
+        SDL_RenderFillRectF(renderer, &rect); 
+        break;
+    case 8:
+        rect.x = 5*szerokosc_komorki;  
+        SDL_SetRenderDrawColor(renderer,255, 255, 255, 255); 
+        SDL_RenderFillRectF(renderer, &rect); 
+        break;
+    
+    default:
+        break;
+    } 
 
     framecount++;
     int timerFPS = SDL_GetTicks() - lastFrame;
@@ -107,9 +149,8 @@ int menu::sprawdz_rozmiar()
         {
             return 0;
         }              
-        
         if(event.type == SDL_MOUSEBUTTONDOWN)
-        {                             
+        {                          
             // zakres 3x3                         
             if(event.button.x < szerokosc_komorki && event.button.x>0 && event.button.y<HEIGHT/2 && event.button.y>HEIGHT/3 )
             {
@@ -140,13 +181,14 @@ int menu::sprawdz_rozmiar()
             {
                 return 8; 
             }  
+
         }
     }
     return 1;
 }
 
-int menu::sprawdz_ilosc_w_rzedzie() 
-{ 
+int menu::sprawdz_ile()
+{
     int szerokosc_komorki = WIDTH/6;
 
     SDL_Event event;  
@@ -161,44 +203,46 @@ int menu::sprawdz_ilosc_w_rzedzie()
         if(keystates[SDL_SCANCODE_ESCAPE])
         {
             return 0;
-        }              
-        
+        }  
         if(event.type == SDL_MOUSEBUTTONDOWN)
-        {                             
-            // zakres 3x3                         
-            if(event.button.x < szerokosc_komorki && event.button.x>0 && event.button.y<HEIGHT*5/6 && event.button.y>HEIGHT*2/3 )
+        {             
+            // zakres 3                     
+            if(event.button.x < szerokosc_komorki && event.button.x>0 && event.button.y<(HEIGHT*5/6) && event.button.y>(HEIGHT*2/3) )
             {
                 return 3; 
             }
-            // zakres 4x4 
-            if(event.button.x < 2*szerokosc_komorki && event.button.x>szerokosc_komorki && event.button.y<HEIGHT*5/6 && event.button.y>HEIGHT*2/3)
+            // zakres 4 
+            if(event.button.x < 2*szerokosc_komorki && event.button.x>szerokosc_komorki && event.button.y<(HEIGHT*5/6) && event.button.y>(HEIGHT*2/3))
             {
                 return 4; 
             } 
-            // zakres 5x5                        
-            if(event.button.x < 3*szerokosc_komorki && event.button.x>2*szerokosc_komorki && event.button.y<HEIGHT*5/6 && event.button.y>HEIGHT*2/3)
+            // zakres 5                        
+            if(event.button.x < 3*szerokosc_komorki && event.button.x>2*szerokosc_komorki && event.button.y<(HEIGHT*5/6) && event.button.y>(HEIGHT*2/3))
             {
                 return 5; 
             }
-            // zakres 6x6 
-            if(event.button.x < 4*szerokosc_komorki && event.button.x>3*szerokosc_komorki &&  event.button.y<HEIGHT*5/6 && event.button.y>HEIGHT*2/3)
+            // zakres 6 
+            if(event.button.x < 4*szerokosc_komorki && event.button.x>3*szerokosc_komorki &&  event.button.y<(HEIGHT*5/6 )&& event.button.y>(HEIGHT*2/3))
             {
                 return 6; 
             }
-            // zakres 7x7                         
-            if(event.button.x < 5*szerokosc_komorki && event.button.x>4*szerokosc_komorki && event.button.y<HEIGHT*5/6 && event.button.y>HEIGHT*2/3)
+            // zakres 7                         
+            if(event.button.x < 5*szerokosc_komorki && event.button.x>4*szerokosc_komorki && event.button.y<(HEIGHT*5/6 )&& event.button.y>(HEIGHT*2/3))
             {
                 return 7; 
             }
-            // zakres 8x8 
-            if(event.button.x < 6*szerokosc_komorki && event.button.x>5*szerokosc_komorki && event.button.y<HEIGHT*5/6 && event.button.y>HEIGHT*2/3)
+            // zakres 8 
+            if(event.button.x < 6*szerokosc_komorki && event.button.x>5*szerokosc_komorki && event.button.y<(HEIGHT*5/6) && event.button.y>(HEIGHT*2/3))
             {
                 return 8; 
             }  
-        }
+       }
     }
     return 1;
+
 }
+
+
 
 #endif
 

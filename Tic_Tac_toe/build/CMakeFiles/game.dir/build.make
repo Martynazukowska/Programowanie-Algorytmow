@@ -79,6 +79,7 @@ game_EXTERNAL_OBJECTS =
 
 game: CMakeFiles/game.dir/src/main.cpp.o
 game: CMakeFiles/game.dir/build.make
+game: /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
 game: /usr/lib/x86_64-linux-gnu/libSDL2main.a
 game: /usr/lib/x86_64-linux-gnu/libSDL2.so
 game: CMakeFiles/game.dir/link.txt

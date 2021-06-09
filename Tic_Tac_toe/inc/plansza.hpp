@@ -4,7 +4,8 @@
 #include <iostream>
 #include <vector>
 
-
+#include <random>
+#include <algorithm>
 
 #include <random>
 #include <algorithm>
@@ -560,10 +561,8 @@ int plansza::miniMax(int czyj_ruch, int x, int y, int glebia, int Alpha, int Bet
                                 
                     Beta = std::min(Beta, NajlepszaWartosc);  
 
-                    if(Beta <= Alpha)
-                    {
                         break;
-                    }                                        
+                                                          
                 }
             }
         }
@@ -610,10 +609,22 @@ int* plansza::najlepszyRuch(int czyj_ruch)
        glebia = 7;
     }
 
-    for(int i = 0; i < rozmiar; i++)
+    std::vector<std::pair<int,int>> coordinates;
+  
+    for(int i=0; i < rozmiar; ++i)
+        for(int j=0; j < rozmiar; ++j)
+        coordinates.push_back(std::make_pair(i,j));
+
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(coordinates.begin(), coordinates.end(), g);
+
+
+    for(auto& p: coordinates)
     {
-        for(int j = 0; j < rozmiar; j++)
-        {
+        int i,j;
+        i=p.first;
+        j=p.second;
             if(board[i][j] == ' ')
             {             
                 if(czyj_ruch == 10)
@@ -641,7 +652,6 @@ int* plansza::najlepszyRuch(int czyj_ruch)
                     NajlepszaWartosc = wartosc; 
                 }
             }
-        }
     }
     return ruch;
 }

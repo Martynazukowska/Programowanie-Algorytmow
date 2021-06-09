@@ -1,4 +1,5 @@
-#include "SDL2/SDL.h"         
+#include "SDL2/SDL.h"  
+#include "SDL_ttf.h"       
 #include <iostream>
 #include <time.h>
 #include <stdlib.h>
@@ -47,13 +48,16 @@ int main( int argc, char* args[])
             } 
             SDL_SetWindowTitle(window, "tic tac toe");
             SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
+    
+            
+
 
         int x;
         x=0;
         while(build_menu)
         {
             
-            Menu.rysuj(); 
+            Menu.rysuj(0); 
                                             
             SDL_SetWindowTitle(window, "Menu");
             x = Menu.sprawdz_rozmiar();
@@ -63,18 +67,58 @@ int main( int argc, char* args[])
             {
                 build_menu = true;
             }
-            if(x>3 && x<8)
+            if(x>2 && x<9)
             {
  
                 build_menu = false;
+                Menu.rysuj(rozmiar); 
+                SDL_Delay(1000);
             }
         }
-        
         //czarny
-                SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);   
-                //całe na czerwono
-                SDL_RenderClear(renderer); 
-        ile_w_rzedzie=3;
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);   
+        //całe na czerwono
+        SDL_RenderClear(renderer); 
+
+        if(build_menu==false)
+        {
+            while(build_menu2)
+            {
+                SDL_SetWindowTitle(window, "Menu");
+                Menu.rysuj(rozmiar); 
+                int y;
+                y = Menu.sprawdz_ile();
+                while(y!=1)
+                {
+                    if(y<=rozmiar)
+                    {
+                        ile_w_rzedzie=y;
+                        break;
+                    }
+                    else
+                    {
+                        break;
+                    }
+
+                }
+                if(ile_w_rzedzie < 3 || ile_w_rzedzie > 8)
+                {
+                    build_menu2 = true;
+                }
+                if(ile_w_rzedzie>2 && ile_w_rzedzie<9)
+                {
+                    build_menu2 = false;
+                }
+            }
+        }
+
+
+        //czarny
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);   
+        //całe na czerwono
+        SDL_RenderClear(renderer); 
+
+       // ile_w_rzedzie=3;
         
         plansza board(rozmiar, ile_w_rzedzie); 
         board.WypiszPlansze();
@@ -84,8 +128,10 @@ int main( int argc, char* args[])
         cout << "rozmiar planszy to:  " << board.getrozmiar() << "x" << board.getrozmiar() << endl; 
         cout << endl << endl;
 
+        cout << "w rzedzie" << ile_w_rzedzie;
 
-        if(build_menu==false)
+
+        if(build_menu2==false)
         {
             board.draw(50, 50, 200); 
 
@@ -217,6 +263,7 @@ int main( int argc, char* args[])
     }
         SDL_DestroyRenderer(renderer); 
         SDL_DestroyWindow(window);     
+        TTF_Quit();
         SDL_Quit();                   
     
     return 0;

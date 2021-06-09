@@ -3,10 +3,21 @@
 
 #include <iostream>
 #include <vector>
+
+
+
+#include <random>
+#include <algorithm>
 #include "sdl.hpp"
 #include "zmienne_globalne.hpp"
 
 using namespace std;
+
+
+std::ostream& operator<<(std::ostream& os, std::pair<int, int>& p)
+{
+  return os << "(" << p.first << ", " <<p.second << ")";
+}
 
 class plansza
 {
@@ -509,7 +520,6 @@ int plansza::miniMax(int czyj_ruch, int x, int y, int glebia, int Alpha, int Bet
                 //gdy moge zrobić ruch 
                 if(board[i][j] == ' ')
                 {            
-                    
                     board[i][j] = zwyciezca;                                            
                     wartosc = miniMax(czyj_ruch, i, j, glebia - 1, Alpha, Beta, false); // min bo false
                     //tak jakby go nigdy nie było
@@ -539,7 +549,7 @@ int plansza::miniMax(int czyj_ruch, int x, int y, int glebia, int Alpha, int Bet
             {
                 //gdy moge zrobić ruch
                 if(board[i][j] == ' ')
-                {                                             
+                {                                       
                     ruch(czyj_ruch * (-1), i, j);   
                                                                    
                     wartosc = miniMax(czyj_ruch, i, j, glebia - 1, Alpha, Beta, true);  // max bo true

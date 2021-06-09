@@ -21,6 +21,10 @@ iostream
 -
 vector
 -
+random
+-
+algorithm
+-
 sdl.hpp
 /home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/inc/sdl.hpp
 zmienne_globalne.hpp

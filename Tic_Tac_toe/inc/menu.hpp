@@ -11,6 +11,7 @@ private:
 public:
     void rysuj();
     int sprawdz_rozmiar();
+    int sprawdz_ilosc_w_rzedzie();
 };
 
 void menu::rysuj()
@@ -109,7 +110,6 @@ int menu::sprawdz_rozmiar()
         
         if(event.type == SDL_MOUSEBUTTONDOWN)
         {                             
-            std::cout<<"klik";
             // zakres 3x3                         
             if(event.button.x < szerokosc_komorki && event.button.x>0 && event.button.y<HEIGHT/2 && event.button.y>HEIGHT/3 )
             {
@@ -145,4 +145,65 @@ int menu::sprawdz_rozmiar()
     return 1;
 }
 
+int menu::sprawdz_ilosc_w_rzedzie() 
+{ 
+    int szerokosc_komorki = WIDTH/6;
+
+    SDL_Event event;  
+
+    while(SDL_PollEvent(&event))
+    {                                    
+        if(event.type == SDL_QUIT)
+        {
+            return 0;
+        }                           
+        const Uint8 *keystates = SDL_GetKeyboardState(NULL);
+        if(keystates[SDL_SCANCODE_ESCAPE])
+        {
+            return 0;
+        }              
+        
+        if(event.type == SDL_MOUSEBUTTONDOWN)
+        {                             
+            // zakres 3x3                         
+            if(event.button.x < szerokosc_komorki && event.button.x>0 && event.button.y<HEIGHT*5/6 && event.button.y>HEIGHT*2/3 )
+            {
+                return 3; 
+            }
+            // zakres 4x4 
+            if(event.button.x < 2*szerokosc_komorki && event.button.x>szerokosc_komorki && event.button.y<HEIGHT*5/6 && event.button.y>HEIGHT*2/3)
+            {
+                return 4; 
+            } 
+            // zakres 5x5                        
+            if(event.button.x < 3*szerokosc_komorki && event.button.x>2*szerokosc_komorki && event.button.y<HEIGHT*5/6 && event.button.y>HEIGHT*2/3)
+            {
+                return 5; 
+            }
+            // zakres 6x6 
+            if(event.button.x < 4*szerokosc_komorki && event.button.x>3*szerokosc_komorki &&  event.button.y<HEIGHT*5/6 && event.button.y>HEIGHT*2/3)
+            {
+                return 6; 
+            }
+            // zakres 7x7                         
+            if(event.button.x < 5*szerokosc_komorki && event.button.x>4*szerokosc_komorki && event.button.y<HEIGHT*5/6 && event.button.y>HEIGHT*2/3)
+            {
+                return 7; 
+            }
+            // zakres 8x8 
+            if(event.button.x < 6*szerokosc_komorki && event.button.x>5*szerokosc_komorki && event.button.y<HEIGHT*5/6 && event.button.y>HEIGHT*2/3)
+            {
+                return 8; 
+            }  
+        }
+    }
+    return 1;
+}
+
 #endif
+
+
+
+
+
+

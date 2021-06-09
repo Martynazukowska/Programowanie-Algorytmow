@@ -31,34 +31,14 @@ int main( int argc, char* args[])
     {
         tak_nie = true;         // zmienna decydujaca o wyswietlaniu sie okna do ponownego sprobowania
 
+        build_menu=true;
+        build_menu2=true;
+
         ile_w_rzedzie;
         rozmiar;
         ile_w_rzedzie=-1;
         rozmiar=-1;
 
-        while(rozmiar < 3)
-        {
-            cout << "Podaj rozmiar planszy: ";
-            cin >> rozmiar;
-        }
-        while(ile_w_rzedzie < 3 || ile_w_rzedzie>rozmiar)
-        {
-            cout << "Podaj ilosc znakow w rzedzie do wygranej:  ";
-            cin >> ile_w_rzedzie;
-        }
-
-        //przypisanie rozmiaru i ile w rzedzie 
-        plansza board(rozmiar, ile_w_rzedzie); 
-        //plansza board(1, 1);
-
-        cout << endl << endl;
-        cout << "rozmiar planszy to:  " << board.getrozmiar() << "x" << board.getrozmiar() << endl; 
-        cout << endl << endl;
-
-        
-            board.WypiszPlansze();
-
-            
             running = 1;
             fullscreen = 0;
             if(SDL_CreateWindowAndRenderer(WIDTH, HEIGHT, SDL_WINDOW_SHOWN, &window, &renderer) < 0)
@@ -70,29 +50,42 @@ int main( int argc, char* args[])
 
         int x;
         x=0;
-        // while(build_menu)
-        // {
+        while(build_menu)
+        {
             
-        //     Menu.rysuj(); 
+            Menu.rysuj(); 
                                             
-        //     SDL_SetWindowTitle(window, "Menu");
-        //      x = Menu.sprawdz_rozmiar();
+            SDL_SetWindowTitle(window, "Menu");
+            x = Menu.sprawdz_rozmiar();
+             rozmiar=x;
 
-        //     if(x < 3 || x > 8)
-        //     {
-        //         build_menu = true;
-        //     }
-        //     else
-        //     {
-        //         //czarny
-        //         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);   
-        //         //całe na czerwono
-        //         SDL_RenderClear(renderer);  
-        //         cout<<x<<" ";
-        //         build_menu = false;
-        //     }
-        // }
-        if(x==0)
+            if(x < 3 || x > 8)
+            {
+                build_menu = true;
+            }
+            if(x>3 && x<8)
+            {
+ 
+                build_menu = false;
+            }
+        }
+        
+        //czarny
+                SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);   
+                //całe na czerwono
+                SDL_RenderClear(renderer); 
+        ile_w_rzedzie=3;
+        
+        plansza board(rozmiar, ile_w_rzedzie); 
+        board.WypiszPlansze();
+
+
+        cout << endl << endl;
+        cout << "rozmiar planszy to:  " << board.getrozmiar() << "x" << board.getrozmiar() << endl; 
+        cout << endl << endl;
+
+
+        if(build_menu==false)
         {
             board.draw(50, 50, 200); 
 

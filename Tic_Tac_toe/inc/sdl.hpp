@@ -9,6 +9,7 @@ SDL_Window* window;
 bool fullscreen, running;
 bool tak_nie = true; 
 bool build_menu=true;
+bool build_menu2=true;
 bool jeszcze_raz = true; //wyświetlanie czy chcesz jeszcze raz
 
 // zmienne do wyrownywania ilosci klatek na sekunde

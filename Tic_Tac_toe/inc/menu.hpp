@@ -1,9 +1,12 @@
 #ifndef MENU_HHP
 #define MENU_HHP
 #include <SDL2/SDL.h>
+#include <SDL.h>
+#include <SDL_ttf.h>
 #include "zmienne_globalne.hpp"
 #include "sdl.hpp"
 #include<iostream>
+#include <iostream>
 #include <stdio.h>
 
 class menu
@@ -16,6 +19,7 @@ public:
     int sprawdz_ile();
 };
 
+
 void menu::rysuj(int rozmiar)
 {
 
@@ -27,7 +31,6 @@ void menu::rysuj(int rozmiar)
     rect.w = WIDTH/6;    
     rect.x = 0;             
     rect.y = HEIGHT/3;   
-
 
     
     SDL_SetRenderDrawColor(renderer,255, 255, 0, 255);
@@ -115,7 +118,20 @@ void menu::rysuj(int rozmiar)
     
     default:
         break;
-    } 
+    }
+
+            SDL_Surface* text;
+            // Set color to black
+            SDL_Color color = { 255, 255, 255 };
+
+            text = TTF_RenderText_Blended( font, "COOOOOŚ", color );
+            if ( !text ) {
+                cout << "Failed to render text: " << TTF_GetError() << endl;
+            }
+            SDL_Texture* text_texture;
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            SDL_Rect dest = { 0, 0, 100, 20};
+            SDL_RenderCopy( renderer, text_texture, &dest, NULL );
 
     framecount++;
     int timerFPS = SDL_GetTicks() - lastFrame;

@@ -25,6 +25,8 @@ int main( int argc, char* args[])
 
     // inicjalizacja SDL
     if(SDL_Init(SDL_INIT_EVERYTHING) < 0){cout << "Blad przy SDL_Init" << endl;} 
+    if(TTF_Init() < 0){cout << "Blad przy TTF_INIT" << endl;} 
+
 
     menu Menu;
 
@@ -48,7 +50,37 @@ int main( int argc, char* args[])
             } 
             SDL_SetWindowTitle(window, "tic tac toe");
             SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
-    
+
+            surface=SDL_GetWindowSurface(window);
+            font = TTF_OpenFont("../scpreg.ttf", 100);
+            if ( !font ) {
+                cout << "Failed to load font: " << TTF_GetError() << endl;
+            }
+
+            // TTF_Font* font;
+            // font = TTF_OpenFont("../scpreg.ttf", 100);
+            // if ( !font ) {
+            //     cout << "Failed to load font: " << TTF_GetError() << endl;
+            // }
+            // SDL_Surface* text;
+            // // Set color to black
+            // SDL_Color color = { 255, 255, 255 };
+
+            // text = TTF_RenderText_Solid( font, "COOOOOŚ", color );
+            // if ( !text ) {
+            //     cout << "Failed to render text: " << TTF_GetError() << endl;
+            // }
+            // SDL_Texture* text_texture;
+
+            // text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            // SDL_Rect dest = { 0, 0, text->w, text->h};
+            // SDL_RenderCopy( renderer, text_texture, &dest, NULL );
+
+            // SDL_Color color = { 255, 255, 255 };
+            // SDL_Surface * surface = TTF_RenderText_Solid(font,"Welcome to Gigi Labs", color);
+            // SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, surface);
+            // SDL_RenderCopy(renderer, texture, NULL, NULL);
+            
             
 
 
@@ -75,6 +107,8 @@ int main( int argc, char* args[])
                 SDL_Delay(1000);
             }
         }
+
+        
         //czarny
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);   
         //całe na czerwono
@@ -260,7 +294,9 @@ int main( int argc, char* args[])
             }
 
         } 
+        TTF_CloseFont( font );
     }
+        
         SDL_DestroyRenderer(renderer); 
         SDL_DestroyWindow(window);     
         TTF_Quit();

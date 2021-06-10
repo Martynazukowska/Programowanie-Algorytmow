@@ -9,10 +9,16 @@
 /home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/inc/menu.hpp
 SDL2/SDL.h
 -
+SDL.h
+-
+SDL_ttf.h
+-
 zmienne_globalne.hpp
 /home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/inc/zmienne_globalne.hpp
 sdl.hpp
 /home/martyna/Studia/Sem_4/Pamsi/lab1/pamsi1/Tic_Tac_toe/inc/sdl.hpp
+iostream
+-
 iostream
 -
 stdio.h

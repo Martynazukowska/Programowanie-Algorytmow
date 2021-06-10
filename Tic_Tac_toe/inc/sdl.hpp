@@ -7,6 +7,8 @@
 
 SDL_Renderer* renderer;
 SDL_Window* window;
+TTF_Font* font;
+SDL_Surface* surface = nullptr;
 
 
 bool fullscreen, running;

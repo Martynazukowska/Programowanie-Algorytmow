@@ -98,7 +98,8 @@ void plansza::draw_X(int x, int y)
  *  \brief  rysuje okrag 
  */
 
-void plansza::draw_O(int x1, int y1){
+void plansza::draw_O(int x1, int y1)
+{
 
     float promien = (WIDTH/rozmiar)/4; 
     const int srednica = (promien*2);

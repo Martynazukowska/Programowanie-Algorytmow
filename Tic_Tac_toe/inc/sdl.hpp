@@ -8,6 +8,7 @@
 SDL_Renderer* renderer;
 SDL_Window* window;
 TTF_Font* font;
+TTF_Font* font2;
 SDL_Surface* surface = nullptr;
 
 

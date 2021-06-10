@@ -122,16 +122,124 @@ void menu::rysuj(int rozmiar)
 
             SDL_Surface* text;
             // Set color to black
-            SDL_Color color = { 255, 255, 255 };
+            SDL_Color color = { 0, 0, 0 };
 
-            text = TTF_RenderText_Blended( font, "COOOOOŚ", color );
+            text = TTF_RenderText_Blended( font, "3x3", color );
             if ( !text ) {
                 cout << "Failed to render text: " << TTF_GetError() << endl;
             }
             SDL_Texture* text_texture;
             text_texture = SDL_CreateTextureFromSurface( renderer, text );
-            SDL_Rect dest = { 0, 0, 100, 20};
-            SDL_RenderCopy( renderer, text_texture, &dest, NULL );
+            int pom;
+            pom =HEIGHT/6;
+            SDL_Rect dest = { 30, (2*pom+25), 40, 30};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            text = TTF_RenderText_Blended( font, "4x4", color );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 30+WIDTH/6, (2*pom+25), 45, 30};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            text = TTF_RenderText_Blended( font, "5x5", color );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 30+WIDTH/3, (2*pom+25), 40, 30};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            text = TTF_RenderText_Blended( font, "6x6", color );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 30+WIDTH/2, (2*pom+25), 45, 30};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            text = TTF_RenderText_Blended( font, "7x7", color );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 30+(WIDTH*2/3), (2*pom+25), 45, 30};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            text = TTF_RenderText_Blended( font, "8x8", color );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 30+(WIDTH*5/6), (2*pom+25), 40, 30};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            pom =HEIGHT/3;
+
+
+            text = TTF_RenderText_Blended( font, "3", color );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 40, (2*pom+25), 20, 30};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            text = TTF_RenderText_Blended( font, "4", color );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 40+WIDTH/6, (2*pom+25), 20, 30};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            text = TTF_RenderText_Blended( font, "5", color );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 40+WIDTH/3, (2*pom+25), 20, 30};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            text = TTF_RenderText_Blended( font, "6", color );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 40+WIDTH/2, (2*pom+25), 20, 30};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            text = TTF_RenderText_Blended( font, "7", color );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 40+(WIDTH*2/3), (2*pom+25), 20, 30};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            text = TTF_RenderText_Blended( font, "8", color );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 40+(WIDTH*5/6), (2*pom+25), 20, 30};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            SDL_Color color2 = { 255, 255, 255 };
+            
+            text = TTF_RenderText_Blended( font2, "Podaj rozmiar planszy: ", color2 );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 20, (2*HEIGHT/6-40),400, 40};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            text = TTF_RenderText_Blended( font2, "Podaj ilosc wygranej w rzedzie : ", color2 );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 20, (4*HEIGHT/6-40),450, 40};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
+            text = TTF_RenderText_Blended( font2, "TIC TAC TOE ", color2 );
+            text_texture = SDL_CreateTextureFromSurface( renderer, text );
+            dest = { 130, 15,400, 80};
+            SDL_RenderCopy( renderer, text_texture, NULL, &dest);
+            SDL_DestroyTexture(text_texture);
+            SDL_FreeSurface(text);
+
 
     framecount++;
     int timerFPS = SDL_GetTicks() - lastFrame;
@@ -141,6 +249,7 @@ void menu::rysuj(int rozmiar)
     }
 
     SDL_RenderPresent(renderer);
+
 }
 
 /**

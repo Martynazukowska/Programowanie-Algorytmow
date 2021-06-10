@@ -56,32 +56,11 @@ int main( int argc, char* args[])
             if ( !font ) {
                 cout << "Failed to load font: " << TTF_GetError() << endl;
             }
+            font2 = TTF_OpenFont("../Bazgroly.ttf", 100);
+            if ( !font ) {
+                cout << "Failed to load font: " << TTF_GetError() << endl;
+            }
 
-            // TTF_Font* font;
-            // font = TTF_OpenFont("../scpreg.ttf", 100);
-            // if ( !font ) {
-            //     cout << "Failed to load font: " << TTF_GetError() << endl;
-            // }
-            // SDL_Surface* text;
-            // // Set color to black
-            // SDL_Color color = { 255, 255, 255 };
-
-            // text = TTF_RenderText_Solid( font, "COOOOOŚ", color );
-            // if ( !text ) {
-            //     cout << "Failed to render text: " << TTF_GetError() << endl;
-            // }
-            // SDL_Texture* text_texture;
-
-            // text_texture = SDL_CreateTextureFromSurface( renderer, text );
-            // SDL_Rect dest = { 0, 0, text->w, text->h};
-            // SDL_RenderCopy( renderer, text_texture, &dest, NULL );
-
-            // SDL_Color color = { 255, 255, 255 };
-            // SDL_Surface * surface = TTF_RenderText_Solid(font,"Welcome to Gigi Labs", color);
-            // SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, surface);
-            // SDL_RenderCopy(renderer, texture, NULL, NULL);
-            
-            
 
 
         int x;
@@ -295,10 +274,7 @@ int main( int argc, char* args[])
 
         } 
         TTF_CloseFont( font );
-    }
-        
-        SDL_DestroyRenderer(renderer); 
-        SDL_DestroyWindow(window);     
+    }     
         TTF_Quit();
         SDL_Quit();                   
     

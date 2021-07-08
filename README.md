@@ -2,7 +2,7 @@
 
 Stoworzne branche z odpowienimi plikami
 
-Stróktóry STD - testy
+PAMSI - Stróktóry STD + testy
 
 Grafy- najprostsza możliwa ścieżka (na różne sposoby) i generowanie grafów (plus testy)
 
